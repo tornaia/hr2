@@ -134,7 +134,7 @@
           isValid = makeIsValid(options);
           var errorCode = options.errorCode || 'invalid';
           ngModelCtrl.$parsers.unshift(function(viewVal) {
-              if (viewVal === "") {
+              if (viewVal == "") {
                   return null;
               }
               viewVal = viewVal.replace(/\s/g, '').replace(new RegExp(getGroupSepRegex(), "g"), '');
