@@ -116,7 +116,7 @@
       };
       addCommasToInteger = function(val) {
           var decimals, wholeNumbers, formattedWholeNumbers;
-          decimals = val.indexOf('.') == -1 ? '' : val.replace(/^-?\d+\./, '');
+          decimals = val.indexOf('.') === -1 ? '' : val.replace(/^-?\d+\./, '');
           wholeNumbers = val.replace(/(\.\d+)$/, '');
           formattedWholeNumbers = wholeNumbers.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + getGroupSepRegex());
           return "" + formattedWholeNumbers + (decimals > 0 ? getDecimalSep() + decimals : '');
@@ -134,11 +134,11 @@
           isValid = makeIsValid(options);
           var errorCode = options.errorCode || 'invalid';
           ngModelCtrl.$parsers.unshift(function(viewVal) {
-              if (viewVal == "") {
+              if (viewVal === "") {
                   return null;
               }
               viewVal = viewVal.replace(/\s/g, '').replace(new RegExp(getGroupSepRegex(), "g"), '');
-              if (viewVal.indexOf('-') != -1) {
+              if (viewVal.indexOf('-') !== -1) {
                   viewVal = '-' + viewVal.replace(/-/g, '').replace(/^0+/, '');
                   if (viewVal === '-') {
                       viewVal = "0";
