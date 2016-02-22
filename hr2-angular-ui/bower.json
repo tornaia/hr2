@@ -1,0 +1,62 @@
+{
+  "name": "hr2AngularUi",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular-animate": "1.4.8",
+    "angular-touch": "1.4.8",
+    "angular-sanitize": "1.4.8",
+    "angular-messages": "1.4.8",
+    "angular-resource": "1.4.8",
+    "angular-ui-router": "0.2.15",
+    "angular-i18n": "1.4.8",
+    "bootstrap-sass": "3.3.6",
+    "angular-bootstrap": "0.14.3",
+    "angular-toastr": "1.5.0",
+    "moment": "2.10.6",
+    "animate.css": "3.4.0",
+    "angular": "1.4.8",
+    "angular-translate": "2.8.1",
+    "angular-translate-interpolation-messageformat": "2.8.1",
+    "angular-ui-grid": "3.0.7",
+    "angular-mocks": "1.4.8",
+    "ui-select": "angular-ui-select#~0.13.2",
+    "angular-ui-utils": "3.0.0",
+    "lodash": "3.10.1",
+    "ng-dialog": "0.5.6",
+    "angular-dynamic-locale": "0.1.30"
+  },
+  "overrides": {
+    "angular-i18n": {
+      "main": [
+        "angular-locale_hu-hu.js",
+        "angular-locale_en-us.js"
+      ]
+    },
+    "messageformat": {
+      "main": [
+        "messageformat.js",
+        "locale/en.js",
+        "locale/hu.js"
+      ]
+    },
+	"moment": {
+      "main": [
+        "./moment.js",
+        "./locale/hu.js"
+      ]
+    },
+    "bootstrap-sass": {
+      "main": [
+        "assets/stylesheets/_bootstrap.scss",
+        "assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
+        "assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
+        "assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
+        "assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
+        "assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular": "1.4.8"
+  }
+}

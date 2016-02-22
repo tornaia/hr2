@@ -1,0 +1,93 @@
+<div class="container col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+	<div class="panel panel-default panel-transparent">
+	
+	  <div class="panel-heading">{{'felhasznalok.Felhasznalo.Create.Title' | translate}}</div>
+	  
+	  <div class="panel-body">
+		<div class="row">
+			<div class="pull-left">
+				<button type="button" ui-sref-confirm-unsaved-data="app.users" class="btn btn-transparent btn-sm">
+				  <span class="glyphicon glyphicon-arrow-left"></span> {{'felhasznalok.Felhasznalok.Title' | translate}}
+				</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			<form name="vm.usercreateform" class="form-horizontal" ng-submit="vm.create()">
+			  <div class="form-group required">
+			    <label for="inputName" class="col-sm-3 control-label">{{'felhasznalok.Label.Azonosito' | translate}}</label>
+			    <div class="col-sm-9">
+			      <input id="inputName" ng-model="vm.felhasznaloCreateDTO.nev" type="text" class="form-control" ng-required="true" ng-minlength="5">
+			    </div>
+			  </div>
+			  
+  			  <div class="form-group required">
+			    <label for="inputRole" class="col-sm-3 control-label">{{'felhasznalok.Label.Szerep' | translate}}</label>
+			    <div class="col-sm-9">
+	      		  <ui-select id="inputRole" ng-model="vm.felhasznaloCreateDTO.szerep" ng-required="true">
+		            <ui-select-match>{{'enum.Szerep.' + $select.selected | translate}}</ui-select-match>
+		            <ui-select-choices repeat="role in vm.roles | enumFilter: $select.search:'Szerep'">
+		              <span ng-bind-html="'enum.Szerep.' + role | translate | highlight: $select.search"></span>
+		            </ui-select-choices>
+		          </ui-select>
+			    </div>
+			  </div>
+			  
+  			  <div class="form-group required" ng-show="vm.felhasznaloCreateDTO.szerep === 'DOLGOZO'">
+			    <label for="inputPersonalData" class="col-sm-3 control-label">{{'felhasznalok.Label.Hozzarendelt.Szemelyi.Torzs' | translate}}</label>
+			    <div class="col-sm-9">
+	      		  <ui-select id="inputPersonalData" ng-model="vm.felhasznaloCreateDTO.tsz" ng-required="vm.felhasznaloCreateDTO.szerep === 'DOLGOZO'">
+		            <ui-select-match>{{$select.selected.vezeteknev + ' ' + $select.selected.keresztnev}}</ui-select-match>
+		            <ui-select-choices repeat="idAndName.tsz as idAndName in vm.idsAndNames | filter: $select.search">
+		              <span ng-bind-html="idAndName.vezeteknev + ' ' + idAndName.keresztnev | highlight: $select.search"></span>
+		            </ui-select-choices>
+		          </ui-select>
+			    </div>
+			  </div>
+			  
+  			  <div class="form-group">
+			    <label for="inputEnabled" class="col-sm-3 control-label">{{'felhasznalok.Label.Aktiv' | translate}}</label>
+			    <div class="col-sm-9">
+			      <input id="enabled" ng-model="vm.felhasznaloCreateDTO.enabled" type="checkbox" class="form-control-checkbox">
+			    </div>
+			  </div>
+			  
+   			  <div class="form-group required">
+			    <label for="localeRole" class="col-sm-3 control-label">{{'felhasznalok.Label.Nyelv' | translate}}</label>
+			    <div class="col-sm-9">
+      		      <ui-select id="localeRole" ng-model="vm.felhasznaloCreateDTO.locale" ng-required="true">
+	                <ui-select-match>{{'enum.Nyelv.' + $select.selected | translate}}</ui-select-match>
+	                <ui-select-choices repeat="locale in vm.locales | enumFilter: $select.search:'Nyelv'">
+	                  <span ng-bind-html="'enum.Nyelv.' + locale | translate | highlight: $select.search"></span>
+	                </ui-select-choices>
+	              </ui-select>
+			    </div>
+			  </div>
+			  
+  			  <div class="form-group required">
+			    <label for="inputPassword" class="col-sm-3 control-label">{{'felhasznalok.Label.Jelszo' | translate}}</label>
+			    <div class="col-sm-9">
+			      <input id="inputPassword" ng-model="vm.felhasznaloCreateDTO.jelszo" type="password" password-match="vm.felhasznaloCreateDTO.jelszoAgain" class="form-control" ng-required="true" ng-minlength="5">
+			    </div>
+			  </div>
+			  
+   			  <div class="form-group required">
+			    <label for="inputPasswordAgain" class="col-sm-3 control-label">{{'felhasznalok.Label.Jelszo.Megegyszer' | translate}}</label>
+			    <div class="col-sm-9">
+			      <input id="inputPasswordAgain" ng-model="vm.felhasznaloCreateDTO.jelszoAgain" type="password" password-match="vm.felhasznaloCreateDTO.jelszo" class="form-control" ng-required="true" ng-minlength="5">
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <div class="col-sm-offset-3 col-sm-9">
+			      <button type="submit" class="btn btn-primary btn-sm" ng-disabled="vm.usercreateform.$invalid">
+			 	    <span class="glyphicon glyphicon-floppy-disk"></span> {{'common.button.create' | translate}}
+				  </button>
+			    </div>
+			  </div>
+			</form>
+		</div>
+	  </div>
+	</div>
+</div>
+

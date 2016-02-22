@@ -1,0 +1,78 @@
+<div class="container">
+
+	<div class="row form-group">
+		<label for="szervezetiEgyseg" class="col-sm-2 control-label">{{translation.FORM_DEPARTMENT}}</label>
+		<div class="col-sm-4">
+			<select id="szervezetiEgyseg" class="form-control" ng-model="selectedPersonaldata.munkakoriBesorolas.szervezetiEgyseg" ng-options="szervezetiEgyseg.id as translation['SzervezetiEgyseg_' + szervezetiEgyseg.id] for szervezetiEgyseg in szervezetiEgysegek">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+		
+		<label for="foglalkozasiViszony" class="col-sm-2 control-label">{{translation.FORM_STATUS_IN_EMPLOYMENT}}</label>
+		<div class="col-sm-4">
+			<select id="foglalkozasiViszony" class="form-control" ng-model="selectedPersonaldata.munkakoriBesorolas.foglalkozasiViszony" ng-options="foglalkozasiViszony.id as translation['FoglalkozasiViszony_' + foglalkozasiViszony.id] for foglalkozasiViszony in foglalkozasiViszonyok">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="row form-group">
+		<label for="munkakorJellege" class="col-sm-2 control-label">{{translation.FORM_JOB_TYPE}}</label>
+		<div class="col-sm-4">
+			<select id="munkakorJellege" class="form-control" ng-model="selectedPersonaldata.munkakoriBesorolas.munkakorJellege" ng-options="translation['MunkakorJellege_' + munkakorJellege] for munkakorJellege in munkakorJellegek | orderedEnum:'MunkakorJellege'">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+	    </div>
+	    
+   		<label for="foglalkoztatasJellege" class="col-sm-2 control-label">{{translation.FORM_EMPLOYMENT_STATUS}}</label>
+		<div class="col-sm-4">
+			<select id="foglalkoztatasJellege" class="form-control" ng-model="selectedPersonaldata.munkakoriBesorolas.foglalkoztatasJellege" ng-options="foglalkoztatasJellege.id as translation['FoglalkoztatasJellege_' + foglalkoztatasJellege.id] for foglalkoztatasJellege in foglalkoztatasJellegek">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+    </div>
+    
+	<div class="row form-group">
+   		<label for="koltseghely" class="col-sm-2 control-label">{{translation.FORM_COST_LOCATION}}</label>
+		<div class="col-sm-4">
+			<select id="koltseghely" class="form-control" ng-model="selectedPersonaldata.munkakoriBesorolas.koltseghely" ng-options="koltseghely.id as translation['Koltseghely_' + koltseghely.id] for koltseghely in koltseghelyek">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+		
+   		<label for="fEOR" class="col-sm-2 control-label">{{translation.FORM_FEOR}}</label>
+		<div class="col-sm-4">
+			<select id="fEOR" class="form-control" ng-model="selectedPersonaldata.munkakoriBesorolas.fEOR" ng-options="fEOR.id as translation['FEOR_' + fEOR.id] for fEOR in fEORok">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="row form-group">
+   		<label for="munkaidoNapi" class="col-sm-2 control-label">{{translation.FORM_WORKING_HOURS_DAILY}}</label>
+		<div class="col-sm-4">
+			<input id="munkaidoNapi" class="form-control" type="number" ng-model="selectedPersonaldata.munkakoriBesorolas.munkaidoNapi" min="0" max="24" required>
+		</div>
+		
+   		<label for="munkaidoHeti" class="col-sm-2 control-label">{{translation.FORM_WORKING_HOURS_WEEKLY}}</label>
+		<div class="col-sm-4">
+			<input id="munkaidoHeti" class="form-control" type="number" ng-model="selectedPersonaldata.munkakoriBesorolas.munkaidoHeti" min="0" max="168" required>
+		</div>
+	</div>
+	
+	<div class="row form-group">
+   		<label for="munkakor" class="col-sm-2 control-label">{{translation.FORM_JOB}}</label>
+		<div class="col-sm-4">
+			<select id="munkakor" class="form-control" ng-model="selectedPersonaldata.munkakoriBesorolas.munkakor" ng-options="munkakor.id as translation['Munkakor_' + munkakor.id] for munkakor in munkakorok">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+		
+   		<label for="uzemanyagElszamolas" class="col-sm-2 control-label">{{translation.FORM_FUEL_EXPENSES}}</label>
+		<div class="col-sm-4" style="padding-top:7px;">
+			<input id="uzemanyagElszamolas" type="checkbox" ng-model="selectedPersonaldata.munkakoriBesorolas.uzemanyagElszamolas">
+		</div>
+	</div>
+	
+	<jobhistory-table></jobhistory-table>
+</div>

@@ -1,0 +1,8 @@
+<table ng-table="scheduledtaskdetailsTableParams" class="table">
+	<tr ng-repeat="scheduledtaskdetail in $data" ng-click="scheduledtaskdetail.$selected = !scheduledtaskdetail.$selected; changeSelection(scheduledtaskdetail)" ng-class="{'table-data-row-selected': scheduledtaskdetail.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+		<td data-title="translation['TABLE_HEADER_IDENTIFIER']" sortable="'azonosito'">{{scheduledtaskdetail.azonosito}}</td>
+		<td data-title="translation['TABLE_HEADER_START']" sortable="'inditas'" ><div class="nowrap">{{scheduledtaskdetail.inditas | date:'medium'}}</div></td>
+		<td data-title="translation['TABLE_HEADER_FINISH']" sortable="'befejezes'"><div class="nowrap">{{scheduledtaskdetail.befejezes | date:'medium'}}</div></td>
+		<td data-title="translation['TABLE_HEADER_RESULT']" sortable="'eredmeny'"><div class="nowrap">{{scheduledtaskdetail.eredmeny}}</div></td>
+	</tr>
+</table>

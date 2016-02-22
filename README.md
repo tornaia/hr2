@@ -1,2 +1,6 @@
-# hr2
-Human Resource Software System
+"# hr2" 
+
+TODO
+TODO2
+TODO3
+TODO4

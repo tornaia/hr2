@@ -1,0 +1,117 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+// https://github.com/angular-ui/ui-grid/issues/3751
+@font-face {
+  font-family: 'ui-grid';
+  src: url('/app/fonts/ui-grid.eot');
+  src: url('/app/fonts/ui-grid.eot#iefix') format('embedded-opentype'), url('/app/fonts/ui-grid.woff') format('woff'), url('/app/fonts/ui-grid.ttf') format('truetype'), url('/app/fonts/ui-grid.svg?#ui-grid') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  padding: 5 5 0 5px;
+  border: 5 5 0 5px solid transparent;
+  border-radius: 5px;
+  background-color: WhiteSmoke;
+}
+
+.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+
+.form-control-checkbox {
+  vertical-align: middle;
+}
+
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+
+.btn-transparent {
+  background:none;
+}
+
+.panel-transparent {
+  background: none;
+  border: 0px;
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+
+.ui-grid-viewport {
+  background-image:url(/app/assets/images/ui-grid-background.png);
+  background-repeat:repeat;
+}
+
+.ui-grid-action-button {
+  display: none;
+ }
+
+.ui-grid-row:hover .ui-grid-action-button {
+  display: block;
+}
+
+.ui-grid-action-button.glyphicon-pencil:hover {
+  color: blue;
+}
+
+.ui-grid-action-button.glyphicon-trash:hover {
+  color: red;
+}
+
+.ui-grid-action-button.glyphicon-list:hover {
+  color: black;
+}
+
+.ui-grid-action-button.glyphicon-repeat:hover {
+  color: green;
+}
+
+.grid {
+  height: 100%;
+}
+
+.editablecell {
+  background-color: #99FF99;
+  margin: 2px;
+}
+
+.no-resize {
+  resize: none;
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector

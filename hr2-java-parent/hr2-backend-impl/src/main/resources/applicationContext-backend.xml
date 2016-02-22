@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+                  http://www.springframework.org/schema/beans 		http://www.springframework.org/schema/beans/spring-beans.xsd
+                  http://www.springframework.org/schema/context 	http://www.springframework.org/schema/context/spring-context.xsd
+                  http://www.springframework.org/schema/aop 		http://www.springframework.org/schema/aop/spring-aop.xsd
+                  http://www.springframework.org/schema/tx 			http://www.springframework.org/schema/tx/spring-tx.xsd" default-autowire="byName" default-lazy-init="false">
+
+    <!-- Enable @Required @Autowired @PreDestroy @PostConstruct @Resource -->
+    <context:annotation-config/>
+
+    <!-- Scan class file in class path for annotated component -> @Component, @Repository, @Service, and @Controller  -->
+    <context:component-scan base-package="hu.interconnect"/>
+
+	<bean id="propertySourcesPlaceholderConfigurer"  class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+	    <property name="ignoreUnresolvablePlaceholders" value="true" />
+	    <property name="localOverride" value="false" />
+	    <property name="locations">
+	        <list>
+				<value>classpath:/conf/properties/${hr_environment}.properties</value>
+	        </list>
+	    </property>
+	</bean>
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="hu.interconnect.util.LogbackConfigurerWithPropertySourcesPlaceholderConfigurer"/>
+        <property name="targetMethod" value="initLogging"/>
+        <property name="arguments">
+            <list>
+                <value>classpath:conf/logback/${hr_environment}.logback.xml</value>
+                <ref bean="propertySourcesPlaceholderConfigurer"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- =============== SEMA INICIALIZALO =============== -->
+    <bean id="sqlScriptRunner" class="hu.interconnect.util.SqlScriptRunner"/>
+    <bean id="rendszerParameterJdbcDAO" class="hu.interconnect.hr.dao.RendszerParameterJdbcDAO">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="schemaCreator" class="hu.interconnect.util.SchemaCreator" init-method="init">
+        <property name="baseDirectory" value="/initscripts"/>
+    </bean>
+
+
+    <!-- =============== PERSISTENCE =============== -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor">
+        <property name="defaultPersistenceUnitName" value="hu.interconnect.hr"/>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="validationQuery" value="${jdbc.validationQuery}"/>
+        <property name="testOnBorrow" value="${jdbc.testOnBorrow}"/>
+        <property name="initialSize" value="${jdbc.initialSize}"/>
+        <property name="maxActive" value="${jdbc.maxActive}"/>
+        <property name="maxIdle" value="${jdbc.maxIdle}"/>
+        <property name="maxWait" value="${jdbc.maxWait}"/>
+        <property name="minIdle" value="${jdbc.minIdle}"/>
+        <property name="connectionInitSqls">
+            <list>
+                <value>${jdbc.connectionInitSqls0}</value>
+                <value>${jdbc.connectionInitSqls1}</value>
+                <value>${jdbc.connectionInitSqls2}</value>
+                <value>${jdbc.connectionInitSqls3}</value>
+                <value>${jdbc.connectionInitSqls4}</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="schemaCreator">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="persistenceXmlLocation" value="classpath*:META-INF/persistence.xml"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="${jpa.showSql}"/>
+                <property name="generateDdl" value="${jpa.generateDdl}"/>
+                <property name="databasePlatform" value="${jpa.platform}"/>
+            </bean>
+        </property>
+
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">${jpa.hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${jpa.hibernate.hbm2ddl}</prop>
+                <prop key="hibernate.default_schema">${jpa.hibernate.default_schema}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- =============== TRANSACTIONS =============== -->
+    <!-- JPA transaction -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config proxy-target-class="true">
+
+        <!-- ~~~~~~~~~~  Tranzakcio kezeles ~~~~~~~~~~~~~~ -->
+        <aop:advisor advice-ref="txAdvice" pointcut="@within(org.springframework.stereotype.Repository)"/>
+        <aop:advisor advice-ref="txAdvice" pointcut="@within(org.springframework.transaction.annotation.Transactional)"/>
+        <aop:advisor advice-ref="txAdvice" pointcut="@annotation(org.springframework.transaction.annotation.Transactional)"/>
+        <aop:advisor advice-ref="txAdvice" pointcut="@within(org.springframework.stereotype.Service)"/>
+
+    </aop:config>
+
+    <!-- Mail -->
+    <bean id="internalMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.host}"/>
+        <property name="port" value="${mail.port}"/>
+        <property name="username" value="${mail.username}"/>
+        <property name="password" value="${mail.password}"/>
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="mailSender" class="hu.interconnect.common.MailSender">
+        <property name="internalMailSender" ref="internalMailSender"/>
+        <property name="rendszerParameterDAO" ref="rendszerParameterDAO"/>
+        <property name="subjectPrefix" value="${mail.subject.prefix}"/>
+        <property name="from" value="${mail.from}"/>
+        <property name="mailDeflect" value="${mail.deflect}"/>
+        <property name="mailDeflectTo" value="${mail.deflect.to}"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,14 @@
+<div>
+	<table ng-table="receiveditemsTableParams" class="table">
+		<tr ng-repeat="receiveditem in $data" ng-click="receiveditem.$selected = !receiveditem.$selected; changeReceiveditemSelection(receiveditem)" ng-class="{'table-data-row-selected': receiveditem.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_NAME']">{{receiveditem.megnevezes}}</td>
+			<td data-title="translation['TABLE_HEADER_COMMENT']" >{{receiveditem.megjegyzes}}</td>
+			<td data-title="translation['TABLE_HEADER_ATTACHED_FILENAME']">{{receiveditem.eredetiNev}}</td>
+		</tr>
+	</table>
+	
+	<span class="btn btn-default" ng-click-confirmation-on-delete="deleteReceiveditem()" ng-disabled="!selectedReceiveditem" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</span>
+	<span class="btn btn-default" ng-click="showReceiveditemCreate()" ng-disabled="$parent.indexOfSelected == -1" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+	<span class="btn btn-default" ng-click="showReceiveditemEdit()" ng-disabled="!selectedReceiveditem" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_EDIT']}}</span>
+	<span class="btn btn-default" ng-click="downloadReceiveditem()" ng-disabled="!selectedReceiveditem || !selectedReceiveditem.eredetiNev">{{translation['BUTTON_DOWNLOAD']}}</span>
+</div>

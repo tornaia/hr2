@@ -1,0 +1,51 @@
+<div class="menu-bar hidden-xs">
+	<div class="navbar navbar-inverse" role="navigation">
+	    <span ng-repeat-start="menu_element in globalMenu.menuItems"></span>
+		    <div class="top-level-menu btn-group" dropdown is-open="status.isopen" ng-if="menu_element.dropdown.length === 0">
+	          <a ng-href="{{menu_element.href}}" class="dropdown-toggle">{{translation['MENU_' + menu_element.label]}} </a>
+		    </div>
+		    <div class="top-level-menu btn-group" dropdown is-open="status.isopen" ng-if="menu_element.dropdown.length > 0">
+	          <a ng-href="{{menu_element.href}}" class="dropdown-toggle" dropdown-toggle ng-disabled="disabled">{{translation['MENU_' + menu_element.label]}} <span class="caret"></span></a>
+		      <ul class=" top-level-menu dropdown-menu" role="menu">
+		          <li ng-repeat="sub_element in menu_element.dropdown">
+		              <a ng-href="{{sub_element.href}}">{{translation['MENU_' + sub_element.label]}}</a>
+		          </li>
+		      </ul>
+		    </div>
+		<span ng-repeat-end></span>
+		<div class="menu-locale-wrapper">
+			<div class="navbar-brand" style="float:left;">{{userinfo.username}}</div>
+			<locale-body></locale-body>
+		</div>
+	</div>
+</div>
+
+<div class="menu-bar visible-xs">
+	<div class="navbar navbar-inverse" style="z-index:10;">
+	    <div class="container">
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="javascript:void(0);">{{userinfo.username}}</a>
+	        </div>
+	        <div class="navbar-collapse collapse">
+	            <ul class="nav navbar-nav">
+		            <li ng-repeat-start="menu_element in globalMenu.menuItems"></li>
+		                <li><a href="{{menu_element.href}}"><span class="glyphicon"></span> {{translation['MENU_' + menu_element.label]}}</a></li>
+		                <li ng-if="menu_element.dropdown !== null" style="padding-left:50px; overflow:hidden;">
+		                	<ul class="nav navbar-nav navbar-right" ng-repeat="sub_element in menu_element.dropdown">
+		                		<li><a ng-href="{{sub_element.href}}"><span class="glyphicon"></span> {{translation['MENU_' + sub_element.label]}}</a></li>
+			        		</ul>
+					    </li>
+	                <li ng-repeat-end></li>
+	            </ul>
+          		<ul class="nav navbar-nav navbar-left pull-left">
+					<locale-body></locale-body>
+				</ul>
+	        </div>
+	    </div>
+	</div>
+</div>

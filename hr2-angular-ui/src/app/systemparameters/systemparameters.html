@@ -1,0 +1,19 @@
+<div class="container col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+	<div class="panel panel-default panel-transparent">
+		<div class="panel-heading">{{'rendszerparameterek.Rendszerparameterek.Title' | translate}}</div>
+		<div class="panel-body">
+			<form name="vm.systemparameterseditform" class="form-horizontal" ng-submit="vm.edit()">
+				<div class="row">
+					<systemparameters-table></systemparameters-table>
+				</div>
+				<div class="row" role-required="ROLE_ADMINISTRATOR">
+					<div class="pull-right">
+						<button type="submit" class="btn btn-primary btn-sm" ng-disabled="vm.systemparameterseditform.$invalid || vm.systemparameterseditform.$pristine">
+							<span class="glyphicon glyphicon-floppy-disk"></span> {{'common.button.edit' | translate}}
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

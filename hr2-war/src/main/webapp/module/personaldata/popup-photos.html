@@ -1,0 +1,23 @@
+<form name="photosform" class="form-horizontal" role="form" novalidate>
+	<h4>{{translation.FORM_TITLE_PHOTOS_EDIT}}</h4>
+	
+	<div style="max-height:400px;overflow-y: scroll;overflow-x: hidden;">
+		<table class="table">
+			<tr ng-repeat="photo in photos" ng-click="photo.$selected = !photo.$selected; changePhotoSelection(photo)" ng-class="{'table-data-row-selected': photo.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+				<td class="vcenter"><img class="img-rounded" style="max-width:80px; max-height:80px;" ng-src="api/v1/photos/get?id={{photo.id}}{{tokenParam}}"></img></td>
+				<td class="vcenter"><input id="default_{{photo.id}}" type="checkbox" ng-model="photo.miniatur" ng-click="defaultPicSelected(photo)"/><label for="default_{{photo.id}}" class="light-label">&nbsp;{{translation['FORM_DEFAULT']}}</label></td>
+				<td class="vcenter"><button class="btn" ng-click-confirmation-on-delete="delete(photo)" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</button></td>
+			</tr>
+		</table>
+	</div>
+
+  	<div class="form-group">
+	   	<label for="controls" class="col-sm-2 control-label"></label>
+		<div class="col-sm-10">
+			<input id="adat" type="file" class="hidden form-control" ng-model="form.adat" onchange="angular.element(this).scope().storePhoto(this.files);"/>
+			<span class="btn btn-default" ng-click="save()" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_SAVE']}}</span>
+			<span class="btn btn-default" onclick="adat.click();" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_BROWSE']}}</span>
+			<span class="btn btn-default" ng-click="download()" ng-disabled="!selectedPhoto">{{translation['BUTTON_DOWNLOAD']}}</span>
+   	    </div>
+    </div>
+</form>

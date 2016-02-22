@@ -1,0 +1,24 @@
+<div class="container">
+
+	<div class="row form-group">
+		<label for="gyakorisag" class="col-sm-2 control-label">{{translation.FORM_FREQUENCY}}</label>
+		<div class="col-sm-4">
+			<input id="gyakorisag" type="number" class="form-control" ng-model="selectedPersonaldata.orvosiVizsgalat.gyakorisag" min="1" max="99" ng-required="true" required/>
+		</div>
+	</div>
+		
+	<div class="row form-group">
+		<label for="utolsoOrvosiVizsgalatIdopontja" class="col-sm-2 control-label">{{translation.FORM_LAST_MEDICAL_EXAMINATION_DATE}}</label>
+		<div class="col-sm-4">
+			<input id="utolsoOrvosiVizsgalatIdopontja" type="date" class="form-control" ng-model="selectedPersonaldata.orvosiVizsgalat.utolsoOrvosiVizsgalatIdopontja" />
+		</div>
+	</div>
+	
+	<div class="row form-group">
+		<label for="kovetkezoOrvosiVizsgalatIdopontja" class="col-sm-2 control-label">{{translation.FORM_NEXT_MEDICAL_EXAMINATION_DATE}}</label>
+		<div class="col-sm-4">
+			<input id="utolsoOrvosiVizsgalatIdopontja" type="date" class="form-control" ng-model="selectedPersonaldata.orvosiVizsgalat.kovetkezoOrvosiVizsgalatIdopontja" ng-readonly="true" readonly/>
+		</div>
+	</div>
+
+</div>

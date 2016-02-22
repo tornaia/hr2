@@ -1,0 +1,49 @@
+<div class="container">
+	<div ng-form="timeandattendanceform" class="form-group form-group-sm">
+	
+		<div class="row">
+			<div class="put-left form-inline">
+				<input type="month" class="form-control donotvalidate" ng-model="selectedMonth" ng-change="monthChanged()" required="required" required/>
+				<span class="btn btn-link" ng-click="unlockMonth()" ng-hide="timeandattendanceDetails.honapSzerkesztheto" ng-disabled="!isAdministrator"><img ng-src="images/icon_locked.png" width="24" height="24"></span>
+				<span class="btn btn-link" ng-click="lockMonth()" ng-show="timeandattendanceDetails.honapSzerkesztheto" ng-disabled="!isAdministrator"><img ng-src="images/icon_unlocked.png" width="24" height="24"></span>
+			</div>
+			<div class="put-right">
+				<span class="btn workingdaygradient">{{translation['LABEL_WORKING_DAY']}}</span>
+				<span class="btn table-data-row-notworkingday">{{translation['LABEL_FREE_DAY']}} nap</span>
+				<span class="btn table-data-row-freeday">{{translation['LABEL_SUNDAY_AND_PUBLIC_HOLIDAY']}}</span>
+			</div>
+		</div>
+	        
+		<div>
+			<table ng-table="timeandattendanceTableParams" template-pagination="dependencies/ng-table/empty-pagination.html" class="table">
+				<tr ng-repeat="timeandattendancerow in $data" ng-click="timeandattendancerow.$selected = !timeandattendancerow.$selected; changeTimeandattendancerowSelection(timeandattendancerow)" ng-class="{'table-data-row-selected': timeandattendancerow.$selected, 'table-data-row-notworkingday': timeandattendancerow.notworkingday, 'table-data-row-freeday': timeandattendancerow.freeday}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+					<td data-title="translation['TABLE_HEADER_DATE']" class="vcenter ptb1">{{timeandattendancerow.datum | date}}</td>
+					<td data-title="translation['TABLE_HEADER_TYPE']" class="ptb1">
+						<select class="form-control" ng-model="timeandattendancerow.tipus" ng-options="translation['JelenletiAdatTipus_' + jelenletiAdatTipus] for jelenletiAdatTipus in jelenletiAdatTipusok" ng-change="timeandattendancerowChanged(timeandattendancerow)" ng-disabled="!honapSzerkesztheto" ng-required="true" required></select>
+					</td>
+					<td data-title="translation['TABLE_HEADER_FROM']" class="ptb1">
+						<input type="text" class="verylimited form-control" ng-model="timeandattendancerow.kezdet" ng-disabled="timeandattendancerow.tipus != 'MUNKA' || !honapSzerkesztheto" ng-maxlength="5" maxlength="5" mytimeinput/>
+					</td>
+					<td data-title="translation['TABLE_HEADER_TO']" class="ptb1">
+						<input type="text" class="verylimited form-control" ng-model="timeandattendancerow.veg" ng-disabled="timeandattendancerow.tipus != 'MUNKA' || !honapSzerkesztheto" ng-maxlength="5" maxlength="5" mytimeinput/>
+					</td>
+					<td data-title="translation['TABLE_HEADER_WORKED']" class="ptb1">
+						<input type="text" class="verylimited form-control" ng-model="timeandattendancerow.ledolgozott" ng-disabled="timeandattendancerow.tipus != 'MUNKA' || !honapSzerkesztheto" ng-maxlength="5" maxlength="5" mytimeinput/>
+					</td>
+					<td data-title="translation['TABLE_HEADER_OVER50']" class="ptb1">
+						<input type="text" class="verylimited form-control" ng-model="timeandattendancerow.to50" ng-disabled="timeandattendancerow.tipus != 'MUNKA' || !honapSzerkesztheto" ng-maxlength="5" maxlength="5" mytimeinput/>
+					</td>
+					<td data-title="translation['TABLE_HEADER_OVER100']" class="ptb1">
+						<input type="text" class="verylimited form-control" ng-model="timeandattendancerow.to100" ng-disabled="timeandattendancerow.tipus != 'MUNKA' || !honapSzerkesztheto" ng-maxlength="5" maxlength="5" mytimeinput/>
+					</td>
+					<td data-title="translation['TABLE_HEADER_W30']" class="ptb1">
+						<input type="text" class="verylimited form-control" ng-model="timeandattendancerow.m30" ng-disabled="timeandattendancerow.tipus != 'MUNKA' || !honapSzerkesztheto" ng-maxlength="5" maxlength="5" mytimeinput/>
+					</td>
+				</tr>
+			</table>
+			
+			<span class="btn btn-default" ng-click="saveTimeandattendance()" ng-disabled="!honapSzerkesztheto || timeandattendanceform.$invalid || indexOfSelected == -1">{{translation['BUTTON_SAVE']}}</span>
+		</div>
+		
+	</div>
+</div>

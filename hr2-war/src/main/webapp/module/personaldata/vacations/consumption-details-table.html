@@ -1,0 +1,15 @@
+<div>
+	<table ng-table="vacationConsumptionDetailsTableParams" template-pagination="dependencies/ng-table/empty-pagination.html" class="table">
+		<tr ng-repeat="vacationConsumptionDetail in vacationConsumptionDetailsData" ng-click="vacationConsumptionDetail.$selected = !vacationConsumptionDetail.$selected; changeVacationConsumptionDetailSelection(vacationConsumptionDetail)" ng-class="{'table-data-row-selected': vacationConsumptionDetail.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_FROM']">{{vacationConsumptionDetail.kezdet | date }}</td>
+			<td data-title="translation['TABLE_HEADER_TO']">{{vacationConsumptionDetail.veg | date }}</td>
+			<td data-title="translation['TABLE_HEADER_TYPE']">{{translation['FelhasznaltSzabadnapJelleg_' + vacationConsumptionDetail.jelleg]}}</td>
+			<td data-title="translation['TABLE_HEADER_NUM_OF_WORKING_DAYS']">{{vacationConsumptionDetail.munkanapokSzama}}</td>
+		</tr>
+	</table>
+	
+	<div class="pull-right">
+		<span class="btn btn-default" ng-click-confirmation-on-delete="deleteVacationconsumption()" ng-disabled="!selectedVacationConsumptionDetail" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</span>
+		<span class="btn btn-default" ng-click="showVacationconsumptionCreate()" ng-disabled="indexOfSelected == -1" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+	</div>
+</div>

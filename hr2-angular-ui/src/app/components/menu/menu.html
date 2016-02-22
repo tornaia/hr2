@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+
+    <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="javascript:void(0);" class="navbar-brand" ui-sref-confirm-unsaved-data="app.dashboard">HR Intranet</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+  
+    <ul ng-repeat="menuItem in menuCtrl.menu.menuItems" class="nav navbar-nav">
+      <li ng-if="!menuItem.menuItems"><a href="javascript:void(0);" ui-sref-confirm-unsaved-data="app.{{menuItem.label}}">{{'menu.' + menuItem.label | translate}}</a></li>
+      <li ng-if="menuItem.menuItems" class="uib-dropdown" uib-dropdown>
+        <a href="javascript:void(0);" uib-dropdown-toggle class="uib-dropdown-toggle" data-toggle="uib-dropdown">{{'menu.' + menuItem.label | translate}} <b class="caret"></b></a>
+        <ul class="uib-dropdown-menu" role="menu">
+          <li ng-repeat="subMenuItem in menuItem.menuItems"><a href="javascript:void(0);" ui-sref-confirm-unsaved-data="app.{{subMenuItem.label}}">{{'menu.' + subMenuItem.label | translate}}</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+	  <li>
+	  	<a href="javascript:void(0);" ui-sref-confirm-unsaved-data="app.profile({nev:menuCtrl.username})">{{menuCtrl.username}}</a>
+      </li>
+      <li><a href="javascript:void(0);" ui-sref-confirm-unsaved-data="app.logout">{{'menu.logout' | translate}}</a></li>
+    </ul>
+  </div>
+</nav>
+

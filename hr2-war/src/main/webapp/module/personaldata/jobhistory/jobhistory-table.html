@@ -1,0 +1,13 @@
+<div>
+	<table ng-table="jobhistoryTableParams" class="table">
+		<tr ng-repeat="jobhistoryentry in $data" ng-click="jobhistoryentry.$selected = !jobhistoryentry.$selected; changeJobhistoryentrySelection(jobhistoryentry)" ng-class="{'table-data-row-selected': jobhistoryentry.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_DATE']">{{jobhistoryentry.datum | date}}</td>
+			<td data-title="translation['TABLE_HEADER_FEOR']">{{translation['FEOR_' + jobhistoryentry.fEOR]}}</td>
+			<td data-title="translation['TABLE_HEADER_SALARY']" >{{jobhistoryentry.fizetes}}</td>
+		</tr>
+	</table>
+	
+	<span class="btn btn-default" ng-click-confirmation-on-delete="deleteJobhistoryentry()" ng-disabled="!selectedJobhistoryentry" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</span>
+	<span class="btn btn-default" ng-click="showJobhistoryentryCreate()" ng-disabled="$parent.indexOfSelected == -1" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+	<span class="btn btn-default" ng-click="showJobhistoryentryEdit()" ng-disabled="!selectedJobhistoryentry" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_EDIT']}}</span>
+</div>

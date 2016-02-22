@@ -1,0 +1,36 @@
+<div>
+	<form name="valuesetscreateform" class="form-horizontal" role="form" ng-submit="create()" novalidate>
+		<h4>{{translation.FORM_TITLE_VALUESETS_CREATE}}</h4>
+		  
+	  	<div class="form-group">
+		   	<label for="tipus" class="col-sm-2 control-label">{{translation.FORM_TYPE}}</label>
+			<div class="col-sm-10">
+				<select id="tipus" class="form-control" ng-model="form.tipus" ng-options="translation['ErtekkeszletElemTipus_' + ertekkeszletElemTipus] for ertekkeszletElemTipus in ertekkeszletElemTipusok | orderedEnum:'ErtekkeszletElemTipus'" ng-required="true">
+					<option value='' disabled>{{translation.SELECT_CHOOSE_ONE}}</option>
+				</select>
+	   	    </div>
+   	    </div>
+   	    
+ 		<div class="form-group">
+			<label for="hungarianLabel" class="col-sm-2 control-label">{{translation.FORM_HUNGARIAN_LABEL}}</label>
+			<div class="col-sm-10">
+				<input id="hungarianLabel" type="text" class="form-control" ng-model="form.megnevezesMagyar" ng-required="true" />
+		    </div>
+		</div>
+		
+ 		<div class="form-group">
+			<label for="englishLabel" class="col-sm-2 control-label">{{translation.FORM_ENGLISH_LABEL}}</label>
+			<div class="col-sm-10">
+				<input id="englishLabel" type="text" class="form-control" ng-model="form.megnevezesAngol" ng-required="true" />
+		    </div>
+		</div>
+		
+	  	<div class="form-group">
+		   	<label for="controls" class="col-sm-2 control-label"></label>
+			<div class="col-sm-10">
+		       <button id="controls" class="btn btn-primary" ng-disabled="valuesetscreateform.$invalid">{{translation['BUTTON_CREATE']}}</button>
+	   	    </div>
+   	    </div>
+	</form>
+	
+</div>

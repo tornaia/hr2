@@ -1,0 +1,14 @@
+<div>
+	<table ng-table="familymembersTableParams" class="table">
+		<tr ng-repeat="familymember in $data" ng-click="familymember.$selected = !familymember.$selected; changeFamilymemberSelection(familymember)" ng-class="{'table-data-row-selected': familymember.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_NAME']">{{familymember.nev}}</td>
+			<td data-title="translation['TABLE_HEADER_DATE_OF_BIRTH']">{{familymember.szuletesiDatum}}</td>
+			<td data-title="translation['TABLE_HEADER_SSN']" >{{familymember.taj}}</td>
+			<td data-title="translation['TABLE_HEADER_COMMENT']" >{{familymember.megjegyzes}}</td>
+		</tr>
+	</table>
+	
+	<span class="btn btn-default" ng-click-confirmation-on-delete="deleteFamilymember()" ng-disabled="!selectedFamilymember" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</span>
+	<span class="btn btn-default" ng-click="showFamilymemberCreate()" ng-disabled="$parent.indexOfSelected == -1" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+	<span class="btn btn-default" ng-click="showFamilymemberEdit()" ng-disabled="!selectedFamilymember" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_EDIT']}}</span>
+</div>

@@ -1,0 +1,22 @@
+<form name="personaldataForm" role="form" novalidate>
+
+	<navigationbar-create></navigationbar-create>
+	
+	<tabset>
+		<tab heading="{{translation.TAB_PERSONAL_DETAILS}}" active="true"><tab-personal-details-create></tab-personal-details-create></tab>
+		<tab heading="{{translation.TAB_JOB_CLASSIFICATION}}" disable="true"></tab>
+		<tab heading="{{translation.TAB_EMPLOYMENT_STATUS}}" disable="true"></tab>
+		<tab heading="{{translation.TAB_QUALIFICATION}}" disable="true"></tab>
+		<tab heading="{{translation.TAB_RECEIVED_ITEMS}}" disable="true"></tab>
+		<tab heading="{{translation.TAB_FAMILY}}" disable="true"></tab>
+		<tab heading="{{translation.TAB_HEALTH_ASSESSMENT}}" disable="true"></tab>
+		<tab heading="{{translation.TAB_VACATION}}" disable="true"></tab>
+		<tab heading="{{translation.TAB_TIME_AND_ATTENDANCE}}" disable="true"></tab>
+	</tabset>
+
+	<div class="btn-group pull-right" role="group">
+		<input type="submit" class="btn btn-default" value="{{translation.BUTTON_CANCEL}}" ng-click-confirmation-on-unsaved-data="setIndexOfSelected(0); personaldataForm.$setPristine()" required-role="ROLE_ADMINISTRATOR"/>
+		<input type="submit" class="btn btn-default" value="{{translation.BUTTON_CREATE}}" ng-click="createPersonaldata(); personaldataForm.$setPristine()" ng-disabled="personaldataForm.$invalid" required-role="ROLE_ADMINISTRATOR"/>
+	</div>
+	
+</form>

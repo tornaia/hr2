@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hr2-e2etest</artifactId>
+    <name>HR2-e2etest</name>
+    <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>hr2</artifactId>
+        <groupId>hu.interconnect</groupId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>hu.interconnect</groupId>
+            <artifactId>hr2-war</artifactId>
+            <version>${project.version}</version>
+			<type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <war>${project.parent.basedir}/hr2-war/target/hr2.war</war>
+                    <jvmArgs>-Dhr_environment=jetty</jvmArgs>
+                    <jettyXml>${project.basedir}/jetty.xml</jettyXml>
+                    <stopKey>foo</stopKey>
+                    <stopPort>9999</stopPort>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>0.0.26</version>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v0.12.7</nodeVersion>
+                            <npmVersion>2.11.3</npmVersion>
+                            <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+                            <npmDownloadRoot>http://registry.npmjs.org/npm/-/</npmDownloadRoot>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>set npm registry</id>
+                        <goals>
+                            <goal>npm</goal>
+						</goals>
+                    </execution>
+                    
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>update</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.greengerong</groupId>
+                <artifactId>maven-ng-protractor</artifactId>
+                <version>0.0.2</version>
+                <configuration>
+					<!-- FIXME its not working in 0.0.2 and 0.0.3 is not released yet -->
+					<!--beforeRunning>${project.basedir}/node/node ${project.basedir}/node_modules/protractor/bin/webdriver-manager update</beforeRunning-->
+                    <protractor>${project.basedir}/node/node ${project.basedir}/node_modules/protractor/bin/protractor</protractor>
+					<configFile>protractor.conf.js</configFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>ng-protractor</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- FIXME tornaia frontend-forced-clean, meg a forntend-maven-plugin verzioja, konfigja keruljon a parentbe -->
+        </plugins>
+    </build>
+
+</project>

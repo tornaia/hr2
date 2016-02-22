@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" ng-app="hrIntranetApplication">
+	<head>
+		<meta charset="utf-8">
+		<title>HR Intranet</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<script type="text/javascript" src="dependencies/jquery/2.1.4/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="dependencies/angular/1.4.5/angular.js"></script>
+		<script type="text/javascript" src="dependencies/angular/1.4.5/angular-resource.js"></script>
+		<script type="text/javascript" src="dependencies/angular/1.4.5/angular-route.js"></script>
+		<script type="text/javascript" src="dependencies/angular/1.4.5/angular-animate.js"></script>
+		<script type="text/javascript" src="dependencies/ng-table/1.0.0-alpha.6/ng-table.js"></script>
+		<script type="text/javascript" src="dependencies/ngDialog/0.3.12/js/ngDialog.js"></script>
+		<script type="text/javascript" src="dependencies/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.js"></script>
+		
+		<script type="text/javascript" src="utils.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="module/core/toaster/toaster.js"></script>
+		<script type="text/javascript" src="module/core/components/components.js"></script>
+		<script type="text/javascript" src="module/core/confirmation/confirmation.js"></script>
+		<script type="text/javascript" src="module/core/security/security.js"></script>
+		<script type="text/javascript" src="module/core/locale/locale.js"></script>
+		<script type="text/javascript" src="module/core/menu/menu.js"></script>
+		<script type="text/javascript" src="module/login/login.js"></script>
+		<script type="text/javascript" src="module/dashboard/dashboard.js"></script>
+		<script type="text/javascript" src="module/logout/logout.js"></script>
+		<script type="text/javascript" src="module/timeandattendance/timeandattendance.js"></script>
+		<script type="text/javascript" src="module/personaldata/navigationbar/navigationbar.js"></script>
+		<script type="text/javascript" src="module/personaldata/personaldata.js"></script>
+		<script type="text/javascript" src="module/personaldata/jobhistory/jobhistory.js"></script>
+		<script type="text/javascript" src="module/personaldata/qualifications/qualifications.js"></script>
+		<script type="text/javascript" src="module/personaldata/receiveditems/receiveditems.js"></script>
+		<script type="text/javascript" src="module/personaldata/familymembers/familymembers.js"></script>
+		<script type="text/javascript" src="module/personaldata/vacations/vacations.js"></script>
+		<script type="text/javascript" src="module/personaldata/timeandattendance/timeandattendance.js"></script>
+		<script type="text/javascript" src="module/exceptiondays/exceptiondays.js"></script>
+		<script type="text/javascript" src="module/scheduledtasks/scheduledtasks.js"></script>
+		<script type="text/javascript" src="module/systemparameters/systemparameters.js"></script>
+		<script type="text/javascript" src="module/valuesets/valuesets.js"></script>
+		<script type="text/javascript" src="module/users/users.js"></script>
+		<script type="text/javascript" src="module/reports/reports.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="dependencies/ng-table/1.0.0-alpha.6/ng-table.css" />
+		<link rel="stylesheet" type="text/css" href="dependencies/bootstrap/3.3.5/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="dependencies/ngDialog/0.3.12/css/ngDialog.css" />
+		<link rel="stylesheet" type="text/css" href="dependencies/ngDialog/0.3.12/css/ngDialog-theme-default.css" />
+		<link rel="stylesheet" type="text/css" href="dependencies/ngDialog/0.3.12/css/ngDialog-theme-plain.css" />
+		
+		<!-- TODO ezt átszervezni valahova máshova -->
+		<link rel="stylesheet" type="text/css" href="loading.css" />
+		<link rel="stylesheet" type="text/css" href="module/core/toaster/toaster.css" />
+		
+		<link rel="stylesheet" type="text/css" href="app.css" />
+	</head>
+	<body>
+		<toaster-container toaster-options="{'position-class': 'toast-top-right'}"></toaster-container>
+	    <div class="sample-show-hide bar bar-loading bar-assertive" style="clear:both;" ng-show="data.pendingRequests > 0"></div>
+            
+	    <!-- You can specify the default ng-model-options on a parent element (e.g., the <form> element)  -->
+		<div ng-view ng-model-options="{timezone:'UTC'}"></div>
+	</body>
+</html>

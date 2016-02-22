@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "devDependencies": {
+    "protractor": "2.5.1"
+  },
+  "scripts": {
+    "postinstall": ".\\node\\node .\\node_modules\\protractor\\bin\\webdriver-manager update"
+  }
+}

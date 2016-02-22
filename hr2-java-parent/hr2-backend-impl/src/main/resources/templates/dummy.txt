@@ -1,0 +1,4 @@
+Do not delete this file otherwise you will get
+java.lang.IllegalStateException: Cannot find template location: classpath:/templates/ (please add some templates, check your Velocity configuration, or set spring.velocity.checkTemplateLocation=false)
+        at org.springframework.util.Assert.state(Assert.java:392)
+        ...

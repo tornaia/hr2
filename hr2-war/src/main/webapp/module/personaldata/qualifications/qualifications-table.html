@@ -1,0 +1,16 @@
+<div>
+	<table ng-table="qualificationsTableParams" class="table">
+		<tr ng-repeat="qualification in $data" ng-click="qualification.$selected = !qualification.$selected; changeQualificationSelection(qualification)" ng-class="{'table-data-row-selected': qualification.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_TYPE']">{{qualification.tipus}}</td>
+			<td data-title="translation['TABLE_HEADER_NAME']">{{qualification.megnevezes}}</td>
+			<td data-title="translation['TABLE_HEADER_MODE_DEGREE']">{{qualification.modFok}}</td>
+			<td data-title="translation['TABLE_HEADER_YEAR']" >{{qualification.ev | date: 'yyyy'}}</td>
+			<td data-title="translation['TABLE_HEADER_END_OF_VALIDITY']" >{{qualification.ervenyessegVege}}</td>
+			<td data-title="translation['TABLE_HEADER_COMMENT']" >{{qualification.megjegyzes}}</td>
+		</tr>
+	</table>
+	
+	<span class="btn btn-default" ng-click-confirmation-on-delete="deleteQualification()" ng-disabled="!selectedQualification" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</span>
+	<span class="btn btn-default" ng-click="showQualificationCreate()" ng-disabled="$parent.indexOfSelected == -1" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+	<span class="btn btn-default" ng-click="showQualificationEdit()" ng-disabled="!selectedQualification" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_EDIT']}}</span>
+</div>

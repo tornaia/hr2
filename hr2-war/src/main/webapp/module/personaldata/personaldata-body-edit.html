@@ -1,0 +1,24 @@
+<form name="personaldataForm" role="form" novalidate>
+
+	<navigationbar-edit></navigationbar-edit>
+
+	<tabset>
+		<tab heading="{{translation.TAB_PERSONAL_DETAILS}}" active="true"><tab-personal-details-edit></tab-personal-details-edit></tab>
+		<tab heading="{{translation.TAB_JOB_CLASSIFICATION}}"><tab-job-classification></tab-job-classification></tab>
+		<tab heading="{{translation.TAB_EMPLOYMENT_STATUS}}"><tab-employment-status></tab-employment-status></tab>
+		<tab heading="{{translation.TAB_QUALIFICATION}}"><tab-qualification></tab-qualification></tab>
+		<tab heading="{{translation.TAB_RECEIVED_ITEMS}}"><tab-received-items></tab-received-items></tab>
+		<tab heading="{{translation.TAB_FAMILY}}"><tab-family></tab-family></tab>
+		<tab heading="{{translation.TAB_HEALTH_ASSESSMENT}}"><tab-health-assessment></tab-health-assessment></tab>
+		<tab heading="{{translation.TAB_VACATION}}"><tab-vacation></tab-vacation></tab>
+		<tab heading="{{translation.TAB_TIME_AND_ATTENDANCE}}"><tab-time-and-attendance></tab-time-and-attendance></tab>
+	</tabset>
+	
+	<div class="btn-group pull-right">
+		<span class="btn btn-default" ng-click-confirmation-on-unsaved-data="cancelPersonaldata(); personaldataForm.$setPristine()" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CANCEL']}}</span>
+		<span class="btn btn-default" ng-click="showPersonaldataComment()" ng-disabled="indexOfSelected == -1">{{translation['BUTTON_COMMENT']}}</span>
+		<span class="btn btn-default" ng-click="showPersonaldataPhoto()" ng-disabled="indexOfSelected == -1">{{translation['BUTTON_PHOTO']}}</span>
+		<span class="btn btn-default" ng-click="savePersonaldata(); personaldataForm.$setPristine()" ng-disabled="personaldataForm.$invalid" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_SAVE']}}</span>
+	</div>
+	
+</form>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="logback.xsd" scan="true">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+	    <smtpHost>${mail.host}</smtpHost>
+	    <smtpPort>${mail.port}</smtpPort>
+	    <STARTTLS>${mail.smtp.starttls.enable}</STARTTLS>
+	    <username>${mail.username}</username>
+	    <password>${mail.password}</password>
+	    <to>${mail.support.to}</to>
+	    <from>${mail.from}</from>
+	    <subject>${mail.subject.prefix} Error: %logger{20} - %m</subject>
+	    <bufferSize>${mail.support.buffersize}</bufferSize>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+		    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %replace(%m){'\n', '\\n'}%n%ex</pattern>
+		</layout>
+	</appender>
+
+	<logger name="hu.interconnect" level="INFO"/>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="EMAIL"/>
+	</root>
+</configuration>

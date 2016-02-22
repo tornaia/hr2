@@ -1,0 +1,52 @@
+<form name="qualificationcreateform" class="form-horizontal" role="form" ng-submit="createQualification()" novalidate>
+	<h4>{{translation.FORM_TITLE_QUALIFICATION_CREATE}} FIX IT</h4>
+	  
+ 		<div class="form-group">
+		<label for="tipus" class="col-sm-2 control-label">{{translation.FORM_TYPE}}</label>
+		<div class="col-sm-10">
+ 				<input id="tipus" type="text" class="form-control" ng-model="form.tipus"/>
+	    </div>
+	</div>
+	
+ 		<div class="form-group">
+		<label for="megnevezes" class="col-sm-2 control-label">{{translation.FORM_NAME}}</label>
+		<div class="col-sm-10">
+ 				<input id="megnevezes" type="text" class="form-control" ng-model="form.megnevezes" ng-required="true" required ng-minlength="1"/>
+	    </div>
+	</div>
+	
+ 		<div class="form-group">
+		<label for="modFok" class="col-sm-2 control-label">{{translation.FORM_MODE_DEGREE}}</label>
+		<div class="col-sm-10">
+ 				<input id="modFok" type="text" class="form-control" ng-model="form.modFok"/>
+	    </div>
+	</div>
+	
+	<div class="form-group">
+		<label for="ev" class="col-sm-2 control-label">{{translation.FORM_YEAR}}</label>
+		<div class="col-sm-10">
+			<input id="ev" type="number" number-as-year class="form-control" ng-model="form.ev" ng-minlength="4" ng-maxlengh="4" ng-required="true" required/>
+	    </div>
+	</div>
+	  
+	<div class="form-group">
+		<label for="ervenyessegVege" class="col-sm-2 control-label">{{translation.FORM_END_OF_VALIDITY}}</label>
+		<div class="col-sm-10">
+			<input id="ervenyessegVege" type="date" class="form-control" ng-model="form.ervenyessegVege"/>
+	    </div>
+	</div>
+  
+  		<div class="form-group">
+		<label for="megjegyzes" class="col-sm-2 control-label">{{translation.FORM_COMMENT}}</label>
+		<div class="col-sm-10">
+ 				<input id="megjegyzes" type="text" class="form-control" ng-model="form.megjegyzes"/>
+	    </div>
+	</div>
+	
+  	<div class="form-group">
+	   	<label for="controls" class="col-sm-2 control-label"></label>
+		<div class="col-sm-10">
+	       <button id="controls" class="btn btn-primary" ng-disabled="qualificationcreateform.$invalid">{{translation['BUTTON_CREATE']}}</button>
+   	    </div>
+    </div>
+</form>

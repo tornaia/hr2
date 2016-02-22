@@ -1,0 +1,10 @@
+<form name="searchPersonaldataform" class="form-horizontal" role="form" ng-submit="selectTszesnev()" novalidate>
+	<table ng-table="searchPersonaldataTableParams" show-filter="true" class="table">
+		<tr ng-repeat="tszesnev in $data" ng-click="tszesnev.$selected = !tszesnev.$selected; changeTszesnevSelection(tszesnev)" ng-class="{'table-data-row-selected': tszesnev.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_IDENTIFIER']" filter="{ 'tsz': 'text' }" sortable="'tsz'">{{tszesnev.tsz}}</td>
+			<td data-title="translation['TABLE_HEADER_NAME']" filter="{ 'nev': 'text' }" sortable="'nev'">{{tszesnev.nev}}</td>
+		</tr>
+	</table>
+	
+	<button class="btn btn-primary" ng-click="selectTszesnev()" ng-disabled="selectDisabled">{{translation['BUTTON_SELECT']}}</button>
+</form>

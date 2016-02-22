@@ -1,0 +1,21 @@
+<nav>
+  <ul class="pager">
+	<li class="pointer"><a ng-click-confirmation-on-unsaved-data="jumpFirst()"><span class="glyphicon glyphicon-fast-backward pointer"></span><span class="hidden-xs"> Első</span></a></li>
+    <li class="pointer"><a ng-click-confirmation-on-unsaved-data="stepBack()"><span class="glyphicon glyphicon-step-backward pointer"></span><span class="hidden-xs"> Előző</span></a></li>
+    
+	<li class="pointer">
+		<span>
+			<span ng-bind="(indexOfSelected + 1) + '/' + (visiblePersonalDetailIds.length)"></span>
+			<a ng-show="!showAll" ng-click-confirmation-on-unsaved-data="changeFilter('all')">Csak aktív</a>
+			<a ng-show="showAll" ng-click-confirmation-on-unsaved-data="changeFilter('active')">Összes</a>
+		</span>
+	</li>
+	
+	<li class="pointer"><a ng-click-confirmation-on-unsaved-data="showPersonaldataSearch()"><span class="glyphicon glyphicon-search pointer"></span><span class="hidden-xs"> Keres</span></a></li>
+	<li class="pointer" required-role="ROLE_ADMINISTRATOR"><a ng-click-confirmation-on-unsaved-data="showPersonaldataCreate()"><span class="glyphicon glyphicon-plus pointer"></span><span class="hidden-xs"> Új</span></a></li>
+	<li class="pointer" required-role="ROLE_ADMINISTRATOR"><a ng-click-confirmation-on-delete="deletePersonaldata()"><span class="glyphicon glyphicon-minus pointer"></span><span class="hidden-xs"> Töröl</span></a></li>
+	
+	<li class="pointer"><a ng-click-confirmation-on-unsaved-data="stepForward()"><span class="hidden-xs">Következő </span><span class="glyphicon glyphicon-step-forward pointer"></span></a></li>
+	<li class="pointer"><a ng-click-confirmation-on-unsaved-data="jumpLast()"><span class="hidden-xs">Utolsó </span><span class="glyphicon glyphicon-fast-forward pointer"></span></a></li>
+  </ul>
+</nav>

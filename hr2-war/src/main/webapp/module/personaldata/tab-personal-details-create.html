@@ -1,0 +1,30 @@
+<div class="container">
+
+	<div class="row form-group">
+	
+		<h4>{{translation.FORM_TITLE_BASE_DATA}}</h4>
+	
+		<div class="form-group col-sm-12 col-lg-4">
+			<label for="tsz" class="control-label col-lg-4">{{translation.FORM_IDENTIFIER}}</label>
+			<div class="col-lg-8">
+				<input id="tsz" type="number" class="form-control arrowless-month-input" ng-model="selectedPersonaldata.tsz" placeholder="Kötelező kitölteni" ng-required="true" min="1"/>
+				<small class="help-block">Az azonosító megadása kötelezően egyedi kell hogy legyen és csak számokat tartalmazhat.</small>
+			</div>
+		</div>
+		
+		<div class="form-group col-sm-12 col-lg-4">
+			<label for="vezeteknev" class="control-label col-lg-4">{{translation.FORM_LAST_NAME}}</label>
+			<div class="col-lg-8">
+				<input id="vezeteknev" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.vezeteknev" placeholder="Kötelező kitölteni" ng-required="true" min="1"/>
+			</div>
+		</div>
+			
+		<div class="form-group col-sm-12 col-lg-4">
+			<label for="keresztnev" class="control-label col-lg-4">{{translation.FORM_FIRST_NAME}}</label>
+			<div class="col-lg-8">
+				<input id="keresztnev" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.keresztnev" placeholder="Kötelező kitölteni" ng-required="true" min="1"/>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,154 @@
+<div class="container-fluid">
+
+	<div class="row">
+		<label for="megvaltottSzabadsag" class="col-sm-2 control-label">{{translation.FORM_PAID_UP_VACATION}}</label>
+		<div class="col-sm-2">
+			<input id="megvaltottSzabadsag" type="number" class="form-control" ng-model="selectedPersonaldata.szabadsagnyilvantartas.megvaltottSzabadsag" ng-required="true" required/>
+		</div>
+	</div>
+	
+	<div class="row">&nbsp;</div>
+	
+	<div class="row" ng-form="annualVacationForm">
+		<div class="col-sm-12">
+			<fieldset>
+			    <legend>{{translation.FORM_TITLE_ANNUAL_VACATION_DATA}}</legend>
+			    <div>
+			    
+				    <div class="col-sm-4">
+						<fieldset>
+						    <legend>{{translation.FORM_TITLE_ALLOWANCE}}</legend>
+							<div class="form-group form-group-sm">
+								<div class="row">
+									<label for="alapszabadsag" class="col-sm-7 control-label">{{translation.FORM_BASE_VACATION}}</label>
+									<div class="col-sm-4">
+										<input id="alapszabadsag" type="number" class="form-control" ng-model="evesSzabadsagAdat.alapszabadsag" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">
+									<label class="col-sm-7 control-label">{{translation.FORM_ADDITIONAL_VACATION}}</label>
+								</div>
+								
+								<div class="row">
+									<label for="gyermekekUtan" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_AFTER_CHILDREN}}</label>
+									<div class="col-sm-4">
+										<input id="gyermekekUtan" type="number" class="form-control" ng-model="evesSzabadsagAdat.gyermekekUtan" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="fiatalkoru" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_JUVENILE}}</label>
+									<div class="col-sm-4">
+										<input id="fiatalkoru" type="number" class="form-control" ng-model="evesSzabadsagAdat.fiatalkoru" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="vakSzemely" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_BLIND_PERSON}}</label>
+									<div class="col-sm-4">
+										<input id="vakSzemely" type="number" class="form-control" ng-model="evesSzabadsagAdat.vakSzemely" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="egyebMunkakor" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_OTHER_JOB}}</label>
+									<div class="col-sm-4">
+										<input id="egyebMunkakor" type="number" class="form-control" ng-model="evesSzabadsagAdat.egyebMunkakor" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="ktKaPotszabadsag" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_KT_KA_ADDITIONAL}}</label>
+									<div class="col-sm-4">
+										<input id="ktKaPotszabadsag" type="number" class="form-control" ng-model="evesSzabadsagAdat.ktKaPotszabadsag" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="ktKaVezetoi" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_KT_KA_MANAGERIAL}}</label>
+									<div class="col-sm-4">
+										<input id="ktKaVezetoi" type="number" class="form-control" ng-model="evesSzabadsagAdat.ktKaVezetoi" ng-required="true" required/>
+									</div>
+								</div>
+								<div class="row">&nbsp;</div>
+								<div class="row">
+									<label for="egyebCsokkento" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_OTHER_REDUCING}}</label>
+									<div class="col-sm-4">
+										<input id="egyebCsokkento" type="number" class="form-control" ng-model="evesSzabadsagAdat.egyebCsokkento" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="tanulmanyi" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_STUDY}}</label>
+									<div class="col-sm-4">
+										<input id="tanulmanyi" type="number" class="form-control" ng-model="evesSzabadsagAdat.tanulmanyi" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="multEviSzabadsag" class="col-sm-7 control-label light-label">{{translation.FORM_ADDITIONAL_VACATION_LAST_YEAR_VACATION}}</label>
+									<div class="col-sm-4">
+										<input id="multEviSzabadsag" type="number" class="form-control" ng-model="evesSzabadsagAdat.multEviSzabadsag" ng-required="true" required/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="szabadsagNapOsszesen" class="col-sm-7 control-label">{{translation.FORM_SUM_OF_VACATION}}</label>
+									<div class="col-sm-4">
+										<input id="szabadsagNapOsszesen" type="number" class="form-control" ng-model="evesSzabadsagAdat.szabadsagNapOsszesen" ng-readonly="true" readonly/>
+									</div>
+								</div>
+								
+								<div class="row">&nbsp;</div>
+								
+								<div class="row">
+									<label for="bszJarandosagAdottEvi" class="col-sm-7 control-label">{{translation.FORM_SICK_ALLOWANCE}}</label>
+									<div class="col-sm-4">
+										<input id="bszJarandosagAdottEvi" type="number" class="form-control" ng-model="evesSzabadsagAdat.bszJarandosagAdottEvi" ng-required="true" required/>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					
+				    <div class="col-sm-8">
+						<fieldset>
+						    <legend>{{translation.FORM_TITLE_CONSUMPTION}}</legend>
+							<consumption-table></consumption-table>
+							<consumption-details-table><consumption-details-table>
+						</fieldset>
+						<div class="pull-right">{{translation.FORM_REMAINING_VACATION}} {{remainingVacation}}</div>
+					</div>
+					
+					<div class="row">&nbsp;</div>
+					
+					<div class="row">
+						<div class="col-sm-1">
+							<span class="btn btn-default" ng-click="createVacation(); annualVacationForm.$setPristine()" ng-hide="evesSzabadsagAdat.id" ng-disabled="indexOfSelected == -1" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+							<span class="btn btn-default" ng-click="saveVacation(); annualVacationForm.$setPristine()" ng-show="evesSzabadsagAdat.id" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_SAVE']}}</span>
+						</div>
+						<div class="col-sm-4"></div>
+						<year-pager ng-model="selectedYear" ng-change="yearChanged(); annualVacationForm.$setPristine()" ng-mousedown-confirmation-on-unsaved-data></year-pager>
+				    </div>
+			    </div>
+			</fieldset>
+		</div>
+	</div>
+</div>

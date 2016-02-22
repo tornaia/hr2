@@ -1,0 +1,213 @@
+<accordion>
+ 
+	<accordion-group heading="{{translation.REPORT_MEDICAL_EXAMINATION_EXPIRY}}" is-open="true">
+		<form name="reportMedicalExaminationExpiryForm" class="form-inline" role="form" ng-submit="submitReportMedicalExaminationExpiryForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_INTERVAL}}</strong></p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportMEE.from" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<p class="form-control-static">-</p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportMEE.to" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportMedicalExaminationExpiryForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_IDENTIFICATION_QUALIFICATION_EXPIRY}}">
+		<form name="reportIdentificationQualificationExpiryForm" class="form-inline" role="form" ng-submit="submitReportIdentificationQualificationExpiryForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_INTERVAL}}</strong></p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportIQE.from" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<p class="form-control-static">-</p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportIQE.to" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportIdentificationQualificationExpiryForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_PROBATIONARY_PERIOD_END}}">
+		<form name="reportProbationaryPeriodEndForm" class="form-inline" role="form" ng-submit="submitReportProbationaryPeriodEndForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_INTERVAL}}</strong></p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportPPE.from" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<p class="form-control-static">-</p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportPPE.to" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportProbationaryPeriodEndForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_LIST_OF_PEOPLE}}">
+		<form name="reportListOfPeopleForm" class="form-inline" role="form" ng-submit="submitReportListOfPeopleForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_STAFF_STATUS}}</strong></p>
+			</div>
+			<div class="form-group">
+				<select class="limited form-control" ng-model="reportLOP.allomanymod" ng-options="translation['RiportAllomanymod_' + riportAllomanymod] for riportAllomanymod in riportAllomanymodok | orderedEnum:'RiportAllomanymod'" ng-required="true">
+					<option value='' disabled>{{translation.SELECT_CHOOSE_ONE}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportListOfPeopleForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_DETAILED_LIST_OF_PEOPLE}}">
+		<form name="reportDetailedListOfPeopleForm" class="form-inline" role="form" ng-submit="submitReportDetailedListOfPeopleForm()" novalidate>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportDetailedListOfPeopleForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_EMAIL_ADDRESSES}}">
+		<form name="reportEmailAddressesForm" class="form-inline" role="form" ng-submit="submitReportEmailAddressesForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_STAFF_STATUS}}</strong></p>
+			</div>
+			<div class="form-group">
+				<select class="limited form-control" ng-model="reportEA.allomanymod" ng-options="translation['RiportAllomanymod_' + riportAllomanymod] for riportAllomanymod in riportAllomanymodok | orderedEnum:'RiportAllomanymod'" ng-required="true">
+					<option value='' disabled>{{translation.SELECT_CHOOSE_ONE}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportEmailAddressesForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_PERSONAL_DATA}}">
+		<form name="reportPersonaldataForm" class="form-inline" role="form" ng-submit="submitReportPersonaldataForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_STAFF_STATUS}}</strong></p>
+			</div>
+			<div class="form-group">
+				<select class="limited form-control" ng-model="reportPD.allomanymod" ng-options="translation['RiportAllomanymod_' + riportAllomanymod] for riportAllomanymod in riportAllomanymodok | orderedEnum:'RiportAllomanymod'" ng-required="true">
+					<option value='' disabled>{{translation.SELECT_CHOOSE_ONE}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportPersonaldataForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_VACATION}}">
+	  	<form name="reportVacationForm" class="form-inline" role="form" ng-submit="submitReportVacationForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_MONTH}}</strong></p>
+			</div>
+			<div class="form-group">
+	  			<month-pager translation="translation" selected-month="reportV.month"></month-pager>
+  			</div>
+  			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportVacationForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_ATTENDANCE}}">
+	  	<form name="reportAttendanceForm" class="form-inline" role="form" ng-submit="submitReportAttendanceForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_MONTH}}</strong></p>
+			</div>
+			<div class="form-group">
+	  			<month-pager translation="translation" selected-month="reportA.month"></month-pager>
+  			</div>
+  			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportAttendanceForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_ENTRANTS_AND_LEAVERS}}">
+		<form name="reportEntrantsAndLeaversForm" class="form-inline" role="form" ng-submit="submitReportEntrantsAndLeaversForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_INTERVAL}}</strong></p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportEAL.from" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<p class="form-control-static">-</p>
+			</div>
+			<div class="form-group">
+				<input type="date" class="limited form-control" ng-model="reportEAL.to" ng-required="true" />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportEntrantsAndLeaversForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_DETAILED_LIST_OF_PEOPLE_PLUS_SALARY_AND_QUALIFICATION}}">
+		<form name="reportDetailedListOfPeopleForm" class="form-inline" role="form" ng-submit="submitDetailedListOfPeopleForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_STAFF_STATUS}}</strong></p>
+			</div>
+			<div class="form-group">
+				<select class="limited form-control" ng-model="reportDLOP.allomanymod" ng-options="translation['RiportAllomanymod_' + riportAllomanymod] for riportAllomanymod in riportAllomanymodok | orderedEnum:'RiportAllomanymod'" ng-required="true">
+					<option value='' disabled>{{translation.SELECT_CHOOSE_ONE}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportDetailedListOfPeopleForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_RECEIVED_ITEMS}}">
+		<form name="reportReceivedItemsForm" class="form-inline" role="form" ng-submit="submitReceivedItemsForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_PERSONAL_DATA}}</strong></p>
+			</div>
+			<div class="form-group">
+				<select class="form-control" ng-model="reportRI.szemelyitorzs" ng-options="tszesnev.nev for tszesnev in tszesnevlist track by tszesnev.tsz" ng-required="true">
+					<option value='' disabled>{{translation.SELECT_CHOOSE_ONE}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportReceivedItemsForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+	<accordion-group heading="{{translation.REPORT_MONTHLY_PAYROLL_DATA}}">
+	  	<form name="reportMonthlyPayrollDataForm" class="form-inline" role="form" ng-submit="submitMonthlyPayrollDataForm()" novalidate>
+			<div class="form-group">
+				<p class="form-control-static"><strong>{{translation.FORM_MONTH}}</strong></p>
+			</div>
+			<div class="form-group">
+	  			<month-pager translation="translation" selected-month="reportMPD.month"></month-pager>
+  			</div>
+  			<div class="form-group">
+				<button class="btn btn-primary" ng-disabled="reportMonthlyPayrollDataForm.$invalid">{{translation['BUTTON_GENERATE']}}</button>
+			</div>
+		</form>
+	</accordion-group>
+	
+</accordion>

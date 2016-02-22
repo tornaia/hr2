@@ -1,0 +1,44 @@
+<div class="container">
+
+	<div class="row form-group">
+		<label for="jogviszonyKezdete" class="col-sm-2 control-label">{{translation.FORM_EMPLOYMENT_RELATION_START}}</label>
+		<div class="col-sm-4">
+			<input id="jogviszonyKezdete" type="date" class="form-control dateinput" ng-model="selectedPersonaldata.jogviszonyAdatok.jogviszonyKezdete" />
+		</div>
+		
+		<label for="allomanymod" class="col-sm-2 control-label">{{translation.FORM_STAFF_STATUS}}</label>
+		<div class="col-sm-4">
+			<select id="allomanymod" class="form-control" ng-model="selectedPersonaldata.jogviszonyAdatok.allomanymod" ng-options="translation['Allomanymod_' + allomanymod] for allomanymod in allomanymodok | orderedEnum:'Allomanymod'" ng-required="true"></select>
+		</div>
+	</div>
+	
+	<div class="row form-group">
+		<label for="jogviszonyVege" class="col-sm-2 control-label">{{translation.FORM_EMPLOYMENT_RELATION_END}}</label>
+		<div class="col-sm-4">
+			<input id="jogviszonyVege" type="date" class="form-control dateinput" ng-model="selectedPersonaldata.jogviszonyAdatok.jogviszonyVege" />
+		</div>
+	</div>
+	
+	<div class="row form-group">
+		<label for=jogviszonyMegszunesenekModja class="col-sm-2 control-label">{{translation.FORM_METHOD_OF_TERMINATION}}</label>
+		<div class="col-sm-4">
+			<select id="jogviszonyMegszunesenekModja" class="form-control" ng-model="selectedPersonaldata.jogviszonyAdatok.jogviszonyMegszunesenekModja" ng-options="translation['JogviszonyMegszunesenekModja_' + jogviszonyMegszunesenekModja] for jogviszonyMegszunesenekModja in jogviszonyMegszunesenekModjai | orderedEnum:'JogviszonyMegszunesenekModja'">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="row form-group">
+		<label for="probaidoVege" class="col-sm-2 control-label">{{translation.FORM_PROBATIONARY_PERIOD_END}}</label>
+		<div class="col-sm-4">
+			<input id="probaidoVege" type="date" class="form-control dateinput" ng-model="selectedPersonaldata.jogviszonyAdatok.probaidoVege" />
+		</div>
+	</div>
+	
+	<div class="row form-group">
+		<label for="munkaszerzodesLejar" class="col-sm-2 control-label">{{translation.FORM_EMPLOYMENT_CONTRACT_END}}</label>
+		<div class="col-sm-4">
+			<input id="munkaszerzodesLejar" type="date" class="form-control dateinput" ng-model="selectedPersonaldata.jogviszonyAdatok.munkaszerzodesLejar" />
+		</div>
+	</div>
+</div>

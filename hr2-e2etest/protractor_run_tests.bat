@@ -1,0 +1,1 @@
+mvn ng-protractor:run

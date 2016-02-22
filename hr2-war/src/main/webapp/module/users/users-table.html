@@ -1,0 +1,16 @@
+<div>
+	<table ng-table="usersTableParams" class="table">
+		<tr ng-repeat="user in $data" ng-click="user.$selected = !user.$selected; changeUserSelection(user)" ng-class="{'table-data-row-selected': user.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_IDENTIFIER']">{{user.id}}</td>
+			<td data-title="translation['TABLE_HEADER_NAME']">{{user.nev}}</td>
+			<td data-title="translation['TABLE_HEADER_PERSONAL_DATA']">{{user.vezeteknev}} {{user.keresztnev}}</td>
+			<td data-title="translation['TABLE_HEADER_ROLE']">{{translation['Szerep_' + user.szerep]}}</td>
+			<td data-title="translation['TABLE_HEADER_ACTIVE']" ng-class="{userenabled: user.enabled == true, userdisabled: user.enabled == false}"></td>
+			<td data-title="translation['TABLE_HEADER_LOCALE']">{{user.locale}}</td>
+		</tr>
+	</table>
+	
+	<span class="btn btn-default" ng-click-confirmation-on-delete="delete()" ng-disabled="!selectedUser" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</span>
+	<span class="btn btn-default" ng-click="showCreate()" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+	<span class="btn btn-default" ng-click="showEdit()" ng-disabled="!selectedUser" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_EDIT']}}</span>
+</div>

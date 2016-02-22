@@ -1,0 +1,13 @@
+<div>
+	<table ng-table="valuesetsTableParams" show-filter="true" class="table">
+		<tr ng-repeat="valueset in $data" ng-click="valueset.$selected = !valueset.$selected; changeSelection(valueset)" ng-class="{'table-data-row-selected': valueset.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_TYPE']" sortable="'tipus'" filter="{ 'tipus': 'text' }">{{translation['ErtekkeszletElemTipus_' + valueset.tipus]}}</td>
+			<td data-title="translation['TABLE_HEADER_HUNGARIAN_LABEL']" sortable="'megnevezesMagyar'" filter="{ 'megnevezesMagyar': 'text' }">{{valueset.megnevezesMagyar}}</td>
+			<td data-title="translation['TABLE_HEADER_ENGLISH_LABEL']" sortable="'megnevezesAngol'" filter="{ 'megnevezesAngol': 'text' }">{{valueset.megnevezesAngol}}</td>
+		</tr>
+	</table>
+	
+	<span class="btn btn-default" ng-click-confirmation-on-delete="delete()" ng-disabled="!selectedValueset" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_DELETE']}}</span>
+	<span class="btn btn-default" ng-click="showCreate()" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CREATE']}}</span>
+	<span class="btn btn-default" ng-click="showEdit()" ng-disabled="!selectedValueset" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_EDIT']}}</span>
+</div>

@@ -1,0 +1,12 @@
+<div>
+	<form name="systemparametersForm" role="form" novalidate>
+	    <table ng-table="systemsparametersTableParams" template-pagination="dependencies/ng-table/empty-pagination.html" class="table">
+		     <tr ng-repeat="systemparameter in $data" ng-click="systemparameter.$selected = !systemparameter.$selected; changeSelection(systemparameter)" ng-class="{'table-data-row-selected': systemparameter.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+		         <td data-title="translation['TABLE_HEADER_TYPE']">{{translation['RendszerParameterTipus_' + systemparameter.tipus]}}</td>
+		         <td data-title="translation['TABLE_HEADER_VALUE']"><input class="form-control" type="text" ng-model="systemparameter.ertek" /></td>
+		     </tr>
+	    </table>
+    </form>
+    <button class="btn btn-default" ng-click="cancel(); systemparametersForm.$setPristine()" name="commit" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_CANCEL']}}</button>
+    <button class="btn btn-default" ng-click="save(); systemparametersForm.$setPristine()" required-role="ROLE_ADMINISTRATOR">{{translation['BUTTON_SAVE']}}</button>
+</div>

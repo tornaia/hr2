@@ -1,0 +1,290 @@
+<div class="container">
+
+	<div class="row form-group">
+	
+		<div class="col-sm-8">
+			<h4>{{translation.FORM_TITLE_BASE_DATA}}</h4>
+		
+			<div class="row form-group">
+				<label for="tsz" class="col-sm-3 control-label">{{translation.FORM_IDENTIFIER}}</label>
+				<div class="col-sm-3">
+					<input id="tsz" type="number" class="form-control" ng-model="selectedPersonaldata.tsz" ng-required="true" min="1" disabled/>
+			    </div>
+				
+				<label for="vezeteknev" class="col-sm-3 control-label">{{translation.FORM_LAST_NAME}}</label>
+				<div class="col-sm-3">
+					<input id="vezeteknev" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.vezeteknev"/>
+			    </div>
+			</div>
+				
+			<div class="row form-group">
+				<label for="allampolgarsag" class="col-sm-3 control-label">{{translation.FORM_NATIONALITY}}</label>
+				<div class="col-sm-3">
+					<select id="allampolgarsag" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.allampolgarsag" ng-options="allampolgarsag.id as translation['Allampolgarsag_' + allampolgarsag.id] for allampolgarsag in allampolgarsagok">
+						<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+					</select>
+				</div>
+				
+				<label for="keresztnev" class="col-sm-3 control-label">{{translation.FORM_FIRST_NAME}}</label>
+				<div class="col-sm-3">
+					<input id="keresztnev" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.keresztnev"/>
+			    </div>
+			    
+			</div>
+
+			<h4>{{translation.FORM_TITLE_BIRTH_DATA}}</h4>
+			<div class="row form-group">
+				<label for="szuletesiDatum" class="col-sm-3 control-label">{{translation.FORM_BIRTH_DATE}}</label>
+				<div class="col-sm-3">
+					<!-- TODO add placeholder to input fields? placeholder="Placeholder text!" -->
+					<input id="szuletesiDatum" type="date" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.szuletesiDatum"/>
+				</div>
+				
+		   		<label for="nem" class="col-sm-3 control-label">{{translation.FORM_SEX}}</label>
+				<div class="col-sm-3">
+					<select id="nem" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.nem" ng-options="translation['Nem_' + nem] for nem in nemek | orderedEnum:'Nem'">
+						<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+					</select>
+			    </div>
+				
+			</div>
+			
+			<div class="row form-group">
+			
+				<label for="szuletesiOrszag" class="col-sm-3 control-label">{{translation.FORM_COUNTRY_OF_BIRTH}}</label>
+				<div class="col-sm-3">
+					<input id="szuletesiOrszag" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.szuletesiOrszag"/>
+			    </div>
+				
+				<label for="szuletesiHely" class="col-sm-3 control-label">{{translation.FORM_PLACE_OF_BIRTH}}</label>
+				<div class="col-sm-3">
+					<input id="szuletesiHely" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.szuletesiHely"/>
+			    </div>
+		
+			</div>
+				
+			<div class="row form-group">
+			
+				<label for="szuletesiNev" class="col-sm-3 control-label">{{translation.FORM_NAME_OF_BIRTH}}</label>
+				<div class="col-sm-3">
+					<input id="szuletesiNev" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.szuletesiNev"/>
+			    </div>
+			
+				<label for="szuletesiNevAnyja" class="col-sm-3 control-label">{{translation.FORM_MOTHERS_NAME}}</label>
+				<div class="col-sm-3">
+					<input id="szuletesiNevAnyja" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.szuletesiNevAnyja"/>
+			    </div>
+			
+			</div>
+		
+		</div>
+		
+		<div class="col-sm-4">
+   			<img class="img-rounded" style="max-width:200px; max-height:288px;" ng-src="{{profilePicture}}"></img>
+		</div>
+	
+	</div>
+		
+	
+	<h4>{{translation.FORM_TITLE_ID_CARDS}}</h4>
+	<div class="row form-group">
+	
+		<label for="adoazonositoJel" class="col-sm-2 control-label">{{translation.FORM_TAX_ID_NUMBER}}</label>
+		<div class="col-sm-2">
+			<input id="adoazonositoJel" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.adoazonositoJel"/>
+	    </div>
+		
+		<label for="taj" class="col-sm-2 control-label">{{translation.FORM_SSN}}</label>
+		<div class="col-sm-2">
+			<input id="taj" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.taj"/>
+	    </div>
+	</div>
+		
+	<div class="row form-group">
+		<label for="szemelyiIgazolvanySzam" class="col-sm-2 control-label">{{translation.FORM_ID_NUMBER}}</label>
+		<div class="col-sm-2">
+			<input id="szemelyiIgazolvanySzam" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.szemelyiIgazolvanySzam"/>
+	    </div>
+	
+		<label for="szemIgSzamLejarat" class="col-sm-2 control-label">{{translation.FORM_EXPIRY}}</label>
+		<div class="col-sm-2">
+			<input id="szemIgSzamLejarat" type="date" class="form-control dateinput" ng-model="selectedPersonaldata.szemelyiAdatok.szemelyiIgazolvanySzamLejarat"/>
+		</div>
+	</div>
+			
+	<div class="row form-group">
+		<label for="utlevelSzam" class="col-sm-2 control-label">{{translation.FORM_PASSPORT_NUMBER}}</label>
+		<div class="col-sm-2">
+			<input id="utlevelSzam" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.utlevelSzam"/>
+	    </div>
+	
+		<label for="utlevelSzamLejarat" class="col-sm-2 control-label">{{translation.FORM_EXPIRY}}</label>
+		<div class="col-sm-2">
+			<input id="utlevelSzamLejarat" type="date" class="form-control dateinput" ng-model="selectedPersonaldata.szemelyiAdatok.utlevelSzamLejarat"/>
+		</div>
+	</div>
+		
+	<div class="row form-group">
+		<label for="jogositvanySzam" class="col-sm-2 control-label">{{translation.FORM_DRIVER_LICENSE_NUMBER}}</label>
+		<div class="col-sm-2">
+			<input id="jogositvanySzam" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.jogositvanySzam"/>
+	    </div>
+	
+		<label for="jogositvanySzamLejarat" class="col-sm-2 control-label">{{translation.FORM_EXPIRY}}</label>
+		<div class="col-sm-2">
+			<input id="jogositvanySzamLejarat" type="date" class="form-control dateinput" ng-model="selectedPersonaldata.szemelyiAdatok.jogositvanySzamLejarat"/>
+		</div>
+	</div>
+	
+	<h4>{{translation.FORM_TITLE_USERS_EDIT2}}Kapcsolat</h4>
+	<div class="row form-group">
+		<label for="telefon" class="col-sm-2 control-label">{{translation.FORM_PHONE}}</label>
+		<div class="col-sm-2">
+			<input id="telefon" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.telefon"/>
+	    </div>
+		
+		<label for="mobil" class="col-sm-2 control-label">{{translation.FORM_MOBILE}}</label>
+		<div class="col-sm-2">
+			<input id="mobil" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.mobil"/>
+	    </div>
+	
+		<label for="email" class="col-sm-2 control-label">{{translation.FORM_EMAIL}}</label>
+		<div class="col-sm-2">
+			<input id="email" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.email"/>
+	    </div>
+	</div>
+	
+	<div class="row form-group col-sm-6">
+		<label for="lakcimAktualis" class="col-sm-4 control-label">{{translation.FORM_RESIDENTIAL}}</label>
+		<div style="padding-top: 7px;">
+			<input class="col-sm-1" type="radio" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAktualis" value="ALLANDO">
+			<span class="col-sm-2">{{translation.FORM_PERMANENT}}</span>
+			<input class="col-sm-1" type="radio" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAktualis" value="IDEIGLENES">
+			<span class="col-sm-2">{{translation.FORM_TEMPORAL}}</span>
+		</div>
+	</div>
+	
+	<div class="row">&nbsp;</div>
+	
+	<div class="row form-group">
+		<label class="col-sm-2 control-label">{{translation.FORM_PERMANENT_ADDRESS}}</label>
+		<div class="col-sm-1">
+			<input type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.iranyitoszam" placeholder="{{translation.FORM_PLACEHOLDER_ZIP_CODE}}"/>
+	    </div>
+	   	<div class="col-sm-2">
+			<input type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.telepules" placeholder="{{translation.FORM_PLACEHOLDER_CITY}}"/>
+	    </div>
+		<div class="col-sm-1">
+			<input id="kerulet" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.kerulet"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="kerulet" class="control-label">{{translation.FORM_DISTRICT}}</label>
+	    </div>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.kozteruletNev" placeholder="{{translation.FORM_PLACEHOLDER_AREA_NAME}}"/>
+		</div>
+		<div class="col-sm-1">
+			<select class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.kozteruletTipus" ng-options="translation['KozteruletTipus_' + kozteruletTipus] for kozteruletTipus in kozteruletTipusok | orderedEnum:'KozteruletTipus'">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+	    </div>
+		<div class="col-sm-1">
+			<input id="kozteruletSzam" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.kozteruletSzam"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="kozteruletSzam" class="control-label">{{translation.FORM_NUMBER}}</label>
+	    </div>
+	
+	</div>
+	
+	<div class="row form-group">
+		<div class="col-sm-1 col-sm-offset-4">
+			<input id="epulet" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.epulet"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="epulet" class="control-label">{{translation.FORM_BUILDING}}</label>
+	    </div>
+	    
+		<div class="col-sm-1">
+			<input id="lepcsohaz" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.lepcsohaz"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="lepcsohaz" class="control-label">{{translation.FORM_STAIRCASE}}</label>
+	    </div>
+	    
+	   	<div class="col-sm-1">
+			<input id="emelet" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.emelet"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="emelet" class="control-label">{{translation.FORM_FLOOR}}</label>
+	    </div>
+	    
+	   	<div class="col-sm-1">
+			<input id="ajto" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimAllando.ajto"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="ajto" class="control-label">{{translation.FORM_DOOR}}</label>
+	    </div>
+	</div>
+	
+	<div class="row form-group">
+		<label class="col-sm-2 control-label">{{translation.FORM_TEMPORAL_ADDRESS}}</label>
+		<div class="col-sm-1">
+			<input type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.iranyitoszam" placeholder="{{translation.FORM_PLACEHOLDER_ZIP_CODE}}"/>
+	    </div>
+	   	<div class="col-sm-2">
+			<input type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.telepules" placeholder="{{translation.FORM_PLACEHOLDER_CITY}}"/>
+	    </div>
+		<div class="col-sm-1">
+			<input id="kerulet" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.kerulet"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="kerulet" class="control-label">{{translation.FORM_DISTRICT}}</label>
+	    </div>
+		<div class="col-sm-2">
+			<input type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.kozteruletNev" placeholder="{{translation.FORM_PLACEHOLDER_AREA_NAME}}"/>
+		</div>
+		<div class="col-sm-1">
+			<select class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.kozteruletTipus" ng-options="translation['KozteruletTipus_' + kozteruletTipus] for kozteruletTipus in kozteruletTipusok | orderedEnum:'KozteruletTipus'">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+	    </div>
+		<div class="col-sm-1">
+			<input id="kozteruletSzam" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.kozteruletSzam"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="kozteruletSzam" class="control-label">{{translation.FORM_NUMBER}}</label>
+	    </div>
+		
+	</div>
+	
+	<div class="row form-group">
+		<div class="col-sm-1 col-sm-offset-4">
+			<input id="epulet" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.epulet"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="epulet" class="control-label">{{translation.FORM_BUILDING}}</label>
+	    </div>
+	    
+		<div class="col-sm-1">
+			<input id="lepcsohaz" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.lepcsohaz"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="lepcsohaz" class="control-label">{{translation.FORM_STAIRCASE}}</label>
+	    </div>
+	    
+	   	<div class="col-sm-1">
+			<input id="emelet" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.emelet"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="emelet" class="control-label">{{translation.FORM_FLOOR}}</label>
+	    </div>
+	    
+	   	<div class="col-sm-1">
+			<input id="ajto" type="text" class="form-control" ng-model="selectedPersonaldata.szemelyiAdatok.lakcimIdeiglenes.ajto"/>
+		</div>
+		<div class="col-sm-1">
+			<label for="ajto" class="control-label">{{translation.FORM_DOOR}}</label>
+	    </div>
+	</div>
+</div>

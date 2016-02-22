@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hr2-war</artifactId>
+    <packaging>war</packaging>
+    <name>HR2-war</name>
+
+	<parent>
+		<groupId>hu.interconnect</groupId>
+		<artifactId>hr2</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</parent>
+	
+	<properties>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+	</properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>hu.interconnect</groupId>
+            <artifactId>hr2-war-config</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.parent.artifactId}</finalName>
+
+        <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,15 @@
+<div>
+	<table ng-table="scheduledtasksTableParams" template-pagination="dependencies/ng-table/empty-pagination.html" sortable="false" class="table">
+		<tr ng-repeat="scheduledtask in $data" ng-click="scheduledtask.$selected = !scheduledtask.$selected; changeSelection(scheduledtask)" ng-class="{'table-data-row-selected': scheduledtask.$selected}" class="table-data-row" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+			<td data-title="translation['TABLE_HEADER_IDENTIFIER']">{{translation['IDENTIFIER_' + scheduledtask.azonosito]}}</td>
+			<td data-title="translation['TABLE_HEADER_STATE']">{{scheduledtask.befejezes | isRunning}}</td>
+			<td data-title="translation['TABLE_HEADER_START']"><div class="nowrap">{{scheduledtask.inditas | date:'medium'}}</div></td>
+			<td data-title="translation['TABLE_HEADER_FINISH']"><div class="nowrap">{{scheduledtask.befejezes | date:'medium'}}</div></td>
+			<td data-title="translation['TABLE_HEADER_RESULT']">{{scheduledtask.eredmeny}}</td>
+			<td data-title="translation['TABLE_HEADER_CRON_EXPRESSION']">{{translation['CRON_' + scheduledtask.azonosito]}}</td>
+		</tr>
+	</table>
+    
+	<span class="btn btn-default" ng-click="showDetails()" ng-disabled="!selectedScheduledtask" required-role="ROLE_BETEKINTO">Részletek</span>
+	<span class="btn btn-default" ng-click="start()" ng-disabled="!selectedScheduledtask || !selectedScheduledtask.befejezes" required-role="ROLE_ADMINISTRATOR">Indít</span>
+</div>

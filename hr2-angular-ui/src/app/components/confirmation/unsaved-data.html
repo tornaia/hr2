@@ -1,0 +1,19 @@
+<form class="form-horizontal" role="form" ng-submit="cancel()">
+	<h4>{{'common.confirmation.requied' | translate}}</h4>
+	 
+  	<div class="form-group">
+  		<label for="message" class="col-sm-1 control-label"></label>
+		<div id="message" class="col-sm-11">
+			{{'common.confirmation.unsaved.data' | translate}}
+		    <p class="help-block">{{'common.confirmation.unsaved.data.help' | translate}}</p>
+   	    </div>
+    </div>
+  	    	 
+  	<div class="form-group">
+	   	<label for="controls" class="col-sm-1 control-label"></label>
+		<div class="col-sm-11">
+			<button type="submit" class="btn btn-warning" ng-click="confirm()">{{'common.alert.yes' | translate}}</button>
+			<button type="submit" class="btn btn-default" ng-click="cancel()">{{'common.alert.no' | translate}}</button>
+   	    </div>
+    </div>
+</form>

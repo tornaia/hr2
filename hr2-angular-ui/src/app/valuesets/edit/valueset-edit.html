@@ -1,0 +1,50 @@
+<div class="container col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+	<div class="panel panel-default panel-transparent">
+	
+	  <div class="panel-heading">{{'ertekkeszletek.Ertekkeszletek.Edit.Title' | translate}}</div>
+	  
+	  <div class="panel-body">
+		<div class="row">
+			<div class="pull-left">
+				<button type="button" ui-sref-confirm-unsaved-data="app.valuesets" class="btn btn-transparent btn-sm">
+				  <span class="glyphicon glyphicon-arrow-left"></span> {{'ertekkeszletek.Ertekkeszletek.Title' | translate}}
+				</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			<form name="vm.valueseteditform" class="form-horizontal" ng-submit="vm.edit()">
+  			  <div class="form-group">
+			    <label for="inputType" class="col-sm-3 control-label">{{'ertekkeszletek.Label.Tipus' | translate}}</label>
+			    <div class="col-sm-9">
+					<span id="inputType" class="form-control" readonly="readonly">{{'enum.ErtekkeszletElemTipus.' + vm.ertekkeszletElemEditDTO.tipus | translate}}</span>
+			    </div>
+			  </div>
+			  
+  			  <div class="form-group required">
+			    <label for="inputHungarian" class="col-sm-3 control-label">{{'ertekkeszletek.Label.Magyar' | translate}}</label>
+			    <div class="col-sm-9">
+			      <input id="inputHungarian" ng-model="vm.ertekkeszletElemEditDTO.megnevezesMagyar" type="text" class="form-control" ng-required="true">
+			    </div>
+			  </div>
+			  
+   			  <div class="form-group required">
+			    <label for="inputEnglish" class="col-sm-3 control-label">{{'ertekkeszletek.Label.Angol' | translate}}</label>
+			    <div class="col-sm-9">
+			      <input id="inputEnglish" ng-model="vm.ertekkeszletElemEditDTO.megnevezesAngol" type="text" class="form-control" ng-required="true">
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <div class="col-sm-offset-3 col-sm-9">
+			      <button type="submit" class="btn btn-primary btn-sm" ng-disabled="vm.valueseteditform.$invalid || vm.valueseteditform.$pristine">
+			 	    <span class="glyphicon glyphicon-floppy-disk"></span> {{'common.button.edit' | translate}}
+				  </button>
+			    </div>
+			  </div>
+			</form>
+		</div>
+	  </div>
+	</div>
+</div>
+

@@ -1,0 +1,35 @@
+<form name="receiveditemeditform" class="form-horizontal" role="form" ng-submit="saveReceiveditem()" novalidate>
+	<h4>{{translation.FORM_TITLE_RECEIVED_ITEM_EDIT}} FIX IT</h4>
+	  
+	<div class="form-group">
+		<label for="megnevezes" class="col-sm-2 control-label">{{translation.FORM_NAME}}</label>
+		<div class="col-sm-10">
+			<input id="megnevezes" type="text" class="form-control" ng-model="form.megnevezes" ng-required="true" required ng-minlength="1"/>
+	    </div>
+	</div>
+	
+	<div class="form-group">
+		<label for="megjegyzes" class="col-sm-2 control-label">{{translation.FORM_COMMENT}}</label>
+		<div class="col-sm-10">
+			<input id="megjegyzes" type="text" class="form-control" ng-model="form.megjegyzes"/>
+	    </div>
+	</div>
+	
+	<div class="form-group">
+		<label for="adat" class="col-sm-2 control-label">{{translation.FORM_ATTACHED_FILENAME}}</label>
+		<div class="col-sm-10">
+			<input id="adat" type="file" class="hidden form-control" ng-model="form.adat" onchange="angular.element(this).scope().storeAttachment(this.files);"/>
+			<label class="form-control" ng-show="form.eredetiNev">{{form.eredetiNev}}</label>
+			<label class="form-control" ng-hide="form.eredetiNev">{{translation.LABEL_NO_ATTACHMENT}}</label>
+			<button type="button" class="btn" onclick="adat.click();">{{translation.BUTTON_BROWSE}}</button>
+		</div>
+	</div>
+	
+  	<div class="form-group">
+	   	<label for="controls" class="col-sm-2 control-label"></label>
+		<div class="col-sm-10">
+	       <button id="controls" class="btn btn-primary" ng-disabled="receiveditemeditform.$invalid">{{translation['BUTTON_SAVE']}}</button>
+   	    </div>
+    </div>
+  	    
+</form>

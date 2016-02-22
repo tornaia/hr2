@@ -1,0 +1,17 @@
+<table ng-table="vacationConsumptionTableParams" template-pagination="dependencies/ng-table/empty-pagination.html" class="table">
+	<tr ng-repeat="item in vacationConsumptionData" ng-class-odd="'table-data-row-odd'" ng-class-even="'table-data-row-even'">
+		<td data-title="translation['TABLE_HEADER_TYPE']">{{translation['FelhasznaltSzabadnapJelleg_' + item.jelleg]}}</td>
+		<td data-title="translation['TABLE_HEADER_JANUARY']" ng-click="handleMouseClick($event, 'january')" ng-mouseover="handleMouseOver($event)">{{item.january}}</td>
+		<td data-title="translation['TABLE_HEADER_FEBRUARY']" ng-click="handleMouseClick($event, 'february')" ng-mouseover="handleMouseOver($event)">{{item.february}}</td>
+		<td data-title="translation['TABLE_HEADER_MARCH']" ng-click="handleMouseClick($event, 'march')" ng-mouseover="handleMouseOver($event)">{{item.march}}</td>
+		<td data-title="translation['TABLE_HEADER_APRIL']" ng-click="handleMouseClick($event, 'april')" ng-mouseover="handleMouseOver($event)">{{item.april}}</td>
+		<td data-title="translation['TABLE_HEADER_MAY']" ng-click="handleMouseClick($event, 'may')" ng-mouseover="handleMouseOver($event)">{{item.may}}</td>
+		<td data-title="translation['TABLE_HEADER_JUNE']" ng-click="handleMouseClick($event, 'june')" ng-mouseover="handleMouseOver($event)">{{item.june}}</td>
+		<td data-title="translation['TABLE_HEADER_JULY']" ng-click="handleMouseClick($event, 'july')" ng-mouseover="handleMouseOver($event)">{{item.july}}</td>
+		<td data-title="translation['TABLE_HEADER_AUGUST']" ng-click="handleMouseClick($event, 'august')" ng-mouseover="handleMouseOver($event)">{{item.august}}</td>
+		<td data-title="translation['TABLE_HEADER_SEPTEMBER']" ng-click="handleMouseClick($event, 'september')" ng-mouseover="handleMouseOver($event)">{{item.september}}</td>
+		<td data-title="translation['TABLE_HEADER_OCTOBER']" ng-click="handleMouseClick($event, 'october')" ng-mouseover="handleMouseOver($event)">{{item.october}}</td>
+		<td data-title="translation['TABLE_HEADER_NOVEMBER']" ng-click="handleMouseClick($event, 'november')" ng-mouseover="handleMouseOver($event)">{{item.november}}</td>
+		<td data-title="translation['TABLE_HEADER_DECEMBER']" ng-click="handleMouseClick($event, 'december')" ng-mouseover="handleMouseOver($event)">{{item.december}}</td>
+	</tr>
+</table>

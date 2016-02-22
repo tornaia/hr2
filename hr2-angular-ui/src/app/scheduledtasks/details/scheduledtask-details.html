@@ -1,0 +1,21 @@
+<div class="container col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+	<div class="panel panel-default panel-transparent">
+	
+	  <div class="panel-heading">{{'idozitettfuttatasok.Idozitettfuttatas.Reszletek.Title' | translate}}</div>
+	  
+	  <div class="panel-body">
+		<div class="row">
+			<div class="pull-left">
+				<button type="button" ui-sref="app.scheduledtasks" class="btn btn-transparent btn-sm">
+				  <span class="glyphicon glyphicon-arrow-left"></span> {{'idozitettfuttatasok.Idozitettfuttatasok.Title' | translate}}
+				</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="grid" ui-grid="vm.scheduledtaskDetailsGridOptions" ui-grid-auto-resize ui-grid-pinning ui-grid-resize-columns ui-grid-move-columns ui-grid-selection></div>
+		</div>
+	  </div>
+	</div>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="container">
+
+	<div class="row form-group">
+		<label for=csaladiAllapot class="col-sm-2 control-label">{{translation.FORM_FAMILY_STATUS}}</label>
+		<div class="col-sm-4">
+			<select id="csaladiAllapot" class="form-control" ng-model="selectedPersonaldata.csalad.csaladiAllapot" ng-options="translation['CsaladiAllapot_' + csaladiAllapot] for csaladiAllapot in csaladiAllapotok | orderedEnum:'CsaladiAllapot'">
+				<option value=''>{{translation.SELECT_CHOOSE_ONE}}</option>
+			</select>
+		</div>
+	</div>
+	
+	<familymembers-table></familymembers-table>
+
+</div>

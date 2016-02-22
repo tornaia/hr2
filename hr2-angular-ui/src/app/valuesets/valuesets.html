@@ -1,0 +1,17 @@
+<div class="container col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+	<div class="panel panel-default panel-transparent">
+		<div class="panel-heading">{{'ertekkeszletek.Ertekkeszletek.Title' | translate}}</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="pull-right">
+					<button type="button" ui-sref="app.valueset-create" class="btn btn-primary btn-sm" role-required="ROLE_ADMINISTRATOR">
+					  <span class="glyphicon glyphicon-plus"></span> {{'ertekkeszletek.Button.Uj' | translate}}
+					</button>
+				</div>
+			</div>
+			<div class="row">
+				<valuesets-table></valuesets-table>
+			</div>
+		</div>
+	</div>
+</div>
