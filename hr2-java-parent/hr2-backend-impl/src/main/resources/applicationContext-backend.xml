@@ -17,7 +17,7 @@
 	    <property name="localOverride" value="false" />
 	    <property name="locations">
 	        <list>
-				<value>classpath:/conf/properties/${hr_environment}.properties</value>
+				<value>classpath:/conf/properties/${hr_environment:developer}.properties</value>
 	        </list>
 	    </property>
 	</bean>
@@ -27,7 +27,7 @@
         <property name="targetMethod" value="initLogging"/>
         <property name="arguments">
             <list>
-                <value>classpath:conf/logback/${hr_environment}.logback.xml</value>
+                <value>classpath:conf/logback/${hr_environment:developer}.logback.xml</value>
                 <ref bean="propertySourcesPlaceholderConfigurer"/>
             </list>
         </property>
