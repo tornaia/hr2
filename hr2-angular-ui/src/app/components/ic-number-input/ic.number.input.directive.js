@@ -17,7 +17,9 @@
           if (scope.options != null) {
               _ref = scope.$eval(scope.options);
               for (option in _ref) {
-                  if (!__hasProp.call(_ref, option)) continue;
+                  if (!__hasProp.call(_ref, option)) {
+                      continue;
+                  }
                   value = _ref[option];
                   options[option] = value;
               }
