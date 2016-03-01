@@ -32,10 +32,15 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <configuration>
                     <war>${project.parent.basedir}/hr2-war/target/hr2.war</war>
-                    <jvmArgs>-Dhr_environment=jetty</jvmArgs>
                     <jettyXml>${project.basedir}/jetty.xml</jettyXml>
                     <stopKey>foo</stopKey>
                     <stopPort>9999</stopPort>
+					<systemProperties>
+					<systemProperty>
+						<name>hr_environment</name>
+						<value>jetty</value>
+						</systemProperty>
+					</systemProperties>
                 </configuration>
                 <executions>
                     <execution>
