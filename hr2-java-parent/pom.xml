@@ -31,7 +31,7 @@
         <logback-ext-spring.version>0.1.2</logback-ext-spring.version>
 
         <!-- Database -->
-        <hibernate.version>4.3.11.Final</hibernate.version>
+        <hibernate.version>5.1.0.Final</hibernate.version>
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
 
         <!-- Commons -->
