@@ -25,7 +25,7 @@ public class MenuQueryServiceImpl implements MenuQueryService {
 		case BETEKINTO:
 		case ADMINISTRATOR:
 			return new MenuResponseDTO(
-					new MenuResponseDTO.MenuItemDTO("PERSONALDATA"),
+					new MenuResponseDTO.MenuItemDTO("personaldata"),
 					new MenuResponseDTO.MenuItemDTO("reports"),
 					new MenuResponseDTO.MenuItemDTO("administration", 
 						new MenuResponseDTO.MenuItemDTO("users"),
