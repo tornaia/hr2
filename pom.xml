@@ -74,6 +74,7 @@
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
 
         <!-- Plugin -->
+        <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
         <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
@@ -138,12 +139,75 @@
                 </property>
             </activation>
         </profile>
+
+        <profile>
+            <id>full-clean</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>./</directory>
+                                    <includes>
+                                        <include>target/**</include>
+                                        <include>bin/**</include>
+                                        <include>dist/**</include>
+                                        <include>.tmp/**</include>
+                                        <include>coverage/**</include>
+                                        <include>reports/**</include>
+                                        <include>PhantomJS_*/**</include>
+                                        <include>bower_components/**</include>
+                                        <include>node/**</include>
+                                        <include>node_modules/**</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
     </profiles>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+            </plugin>
+        </plugins>
+
         <pluginManagement>
 
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>./</directory>
+                                <includes>
+                                    <include>target/**</include>
+                                    <include>bin/**</include>
+                                    <include>dist/**</include>
+                                    <include>.tmp/**</include>
+                                    <include>coverage/**</include>
+                                    <include>reports/**</include>
+                                    <include>PhantomJS_*/**</include>
+                                </includes>
+                                <followSymlinks>false</followSymlinks>
+                            </fileset>
+                        </filesets>
+                    </configuration>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>

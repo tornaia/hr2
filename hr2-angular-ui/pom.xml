@@ -16,7 +16,6 @@
         <nodeVersion>v0.12.7</nodeVersion>
         <npmVersion>2.11.3</npmVersion>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
 
         <sonar.sources>src</sonar.sources>
         <sonar.tests>test</sonar.tests>
@@ -125,31 +124,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>${maven-clean-plugin.version}</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>./</directory>
-                            <includes>
-                                <include>bin/**</include>
-                                <include>dist/**</include>
-                                <include>.tmp/**</include>
-                                <include>coverage/**</include>
-                                <include>reports/**</include>
-                                <include>PhantomJS_*/**</include>
-                                <include>target/**</include>
-                                <!--include>node/**</include-->
-                                <!--include>bower_components/**</include-->
-                                <!--include>node_modules/**</include-->
-                            </includes>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                    </filesets>
-                </configuration>
             </plugin>
 
             <plugin>
