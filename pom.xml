@@ -48,7 +48,6 @@
         <module>hr2-angular-ui</module>
         <module>hr2-war-config</module>
         <module>hr2-war</module>
-        <module>hr2-e2etest</module>
     </modules>
 
     <properties>
@@ -118,27 +117,28 @@
 
         </dependencies>
     </dependencyManagement>
-    <!--profiles>
+
+    <profiles>
         <profile>
-            <id>with-integration-tests</id>
+            <id>with-e2etest</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
-                <module>hr2-endtoendtest</module>
+                <module>hr2-e2etest</module>
             </modules>
         </profile>
 
         <profile>
-            <id>without-integration-tests</id>
+            <id>without-e2etest</id>
             <activation>
                 <property>
-                    <name>integration-tests</name>
+                    <name>e2e-tests</name>
                     <value>false</value>
                 </property>
             </activation>
         </profile>
-    </profiles-->
+    </profiles>
 
     <build>
         <pluginManagement>
