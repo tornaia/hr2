@@ -1,29 +1,29 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>hr2-java-parent</artifactId>
-	<packaging>pom</packaging>
-	<name>HR2-java-parent</name>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hr2-java-parent</artifactId>
+    <packaging>pom</packaging>
+    <name>HR2-java-parent</name>
 
-	<parent>
-		<groupId>hu.interconnect</groupId>
-		<artifactId>hr2</artifactId>
-		<version>0.1-SNAPSHOT</version>
-	</parent>
-	
-	<modules>
-		<module>hr2-commons</module>
-		<module>hr2-backend-api</module>
-		<module>hr2-backend-impl</module>
-		<module>hr2-rest-api</module>
-	</modules>
-	
-	<properties>
-		<coverage.reports.dir>${project.basedir}/../../target/coverage-reports</coverage.reports.dir>
-		
-		<!-- Core -->
-		<spring-data-commons.version>1.11.1.RELEASE</spring-data-commons.version>
-		
+    <parent>
+        <groupId>hu.interconnect</groupId>
+        <artifactId>hr2</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>hr2-commons</module>
+        <module>hr2-backend-api</module>
+        <module>hr2-backend-impl</module>
+        <module>hr2-rest-api</module>
+    </modules>
+
+    <properties>
+        <coverage.reports.dir>${project.basedir}/../../target/coverage-reports</coverage.reports.dir>
+
+        <!-- Core -->
+        <spring-data-commons.version>1.11.1.RELEASE</spring-data-commons.version>
+
         <!-- Logging -->
         <logback.version>1.1.3</logback.version>
         <slf4j.version>1.7.12</slf4j.version>
@@ -35,9 +35,9 @@
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
 
         <!-- Commons -->
-		<commons-lang3.version>3.4</commons-lang3.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
         <commons-validator.version>1.5.0</commons-validator.version>
-		<commons-dbcp.version>1.4</commons-dbcp.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
         <commons-net.version>3.4</commons-net.version>
         <commons-io.version>2.4</commons-io.version>
 
@@ -48,7 +48,7 @@
         <velocity-tools.version>2.0</velocity-tools.version>
 
         <!-- FTP -->
-		<ftpserver-core.version>1.0.6</ftpserver-core.version>
+        <ftpserver-core.version>1.0.6</ftpserver-core.version>
         <mina-core.version>2.0.9</mina-core.version>
 
         <!-- Misc -->
@@ -58,342 +58,342 @@
         <mail.version>1.5.0-b01</mail.version>
         <poi-ooxml.version>3.13</poi-ooxml.version>
         <joda-time.version>2.9.1</joda-time.version>
-		<jsr305.version>3.0.1</jsr305.version>
-		<joda-convert.version>1.8.1</joda-convert.version>
-		<javax.el-api.version>3.0.0</javax.el-api.version>
-		<jackson.version>2.6.4</jackson.version>
-        
-  		<!-- Test -->
-		<junit.version>4.12</junit.version>
+        <jsr305.version>3.0.1</jsr305.version>
+        <joda-convert.version>1.8.1</joda-convert.version>
+        <javax.el-api.version>3.0.0</javax.el-api.version>
+        <jackson.version>2.6.4</jackson.version>
+
+        <!-- Test -->
+        <junit.version>4.12</junit.version>
         <h2.version>1.4.191</h2.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito-core.version>1.10.19</mockito-core.version>
         <htmlunit.version>2.14</htmlunit.version>
-	</properties>
-	
-	<dependencyManagement>
-		<dependencies>
-			<!-- Core -->
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-config</artifactId>
-				<version>${springsecurity.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.security</groupId>
-				<artifactId>spring-security-core</artifactId>
-				<version>${springsecurity.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>${springframework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-				<version>${spring-boot-starter-web.version}</version>
-				<exclusions>
-					<exclusion>
-					  <groupId>org.springframework.boot</groupId>
-					  <artifactId>spring-boot-starter-tomcat</artifactId>
-					</exclusion>
-				  </exclusions> 
-			</dependency>
-		
-		
-	        <!-- Logging -->
-	        <dependency>
-	            <groupId>ch.qos.logback</groupId>
-	            <artifactId>logback-core</artifactId>
-	            <version>${logback.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>ch.qos.logback</groupId>
-	            <artifactId>logback-classic</artifactId>
-	            <version>${logback.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.slf4j</groupId>
-	            <artifactId>slf4j-api</artifactId>
-	            <version>${slf4j.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.slf4j</groupId>
-	            <artifactId>jcl-over-slf4j</artifactId>
-	            <version>${slf4j.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.slf4j</groupId>
-	            <artifactId>log4j-over-slf4j</artifactId>
-	            <version>${slf4j.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.jboss.logging</groupId>
-	            <artifactId>jboss-logging</artifactId>
-	            <version>${jboss-logging.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.logback-extensions</groupId>
-	            <artifactId>logback-ext-spring</artifactId>
-	            <version>${logback-ext-spring.version}</version>
-	            <exclusions>
-	                <exclusion>
-	                    <groupId>ch.qos.logback</groupId>
-	                    <artifactId>logback-classic</artifactId>
-	                </exclusion>
-	            </exclusions>
-	        </dependency>
-	        
-	        
-          	<!-- Database -->
-	        <dependency>
-	            <groupId>com.h2database</groupId>
-	            <artifactId>h2</artifactId>
-	            <version>${h2.version}</version>
-	        </dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>${commons-lang3.version}</version>
-			</dependency>
-	        <dependency>
-	            <groupId>commons-io</groupId>
-	            <artifactId>commons-io</artifactId>
-	            <version>${commons-io.version}</version>
-	        </dependency>
-			<dependency>
-				<groupId>commons-dbcp</groupId>
-				<artifactId>commons-dbcp</artifactId>
-				<version>${commons-dbcp.version}</version>
-			</dependency>
-	        <dependency>
-	            <groupId>commons-net</groupId>
-	            <artifactId>commons-net</artifactId>
-	            <version>${commons-net.version}</version>
-	        </dependency>
-	
-	        <dependency>
-	            <groupId>org.hibernate</groupId>
-	            <artifactId>hibernate-core</artifactId>
-	            <version>${hibernate.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.hibernate</groupId>
-	            <artifactId>hibernate-entitymanager</artifactId>
-	            <version>${hibernate.version}</version>
-	        </dependency>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Core -->
             <dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql-connector-java.version}</version>
-			</dependency>
-	        
-	        
-	        <!-- PDF -->
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${springsecurity.version}</version>
+            </dependency>
             <dependency>
-	            <groupId>org.apache.velocity</groupId>
-	            <artifactId>velocity</artifactId>
-	            <version>${velocity.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>com.lowagie</groupId>
-	            <artifactId>itext</artifactId>
-	            <version>${itext.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.xhtmlrenderer</groupId>
-	            <artifactId>core-renderer</artifactId>
-	            <version>${core-renderer.version}</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>org.apache.velocity</groupId>
-	            <artifactId>velocity-tools</artifactId>
-	            <version>${velocity-tools.version}</version>
-	        </dependency>
-	        
-	        
-	        <!-- Misc -->
-	       <dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjweaver</artifactId>
-				<version>${aspectjweaver.version}</version>
-			</dependency>
-			
-	        <dependency>
-	            <groupId>com.google.guava</groupId>
-	            <artifactId>guava</artifactId>
-	            <version>${guava.version}</version>
-	        </dependency>
-			
-	        <dependency>
-	            <groupId>org.apache.sanselan</groupId>
-	            <artifactId>sanselan</artifactId>
-	            <version>${sanselan.version}</version>
-	        </dependency>
-			
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>com.fasterxml.jackson.datatype</groupId>
-				<artifactId>jackson-datatype-joda</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-	        
-	        <dependency>
-	            <groupId>javax.mail</groupId>
-	            <artifactId>mail</artifactId>
-	            <version>${mail.version}</version>
-	        </dependency>
-	
-	        <dependency>
-	            <groupId>org.apache.poi</groupId>
-	            <artifactId>poi-ooxml</artifactId>
-	            <version>${poi-ooxml.version}</version>
-	        </dependency>
-	
-	        <dependency>
-	            <groupId>joda-time</groupId>
-	            <artifactId>joda-time</artifactId>
-	            <version>${joda-time.version}</version>
-	        </dependency>
-	
-			<dependency>
-				<groupId>org.apache.ftpserver</groupId>
-				<artifactId>ftpserver-core</artifactId>
-				<version>${ftpserver-core.version}</version>
-			</dependency>
-	        
-	        <dependency>
-	            <groupId>org.apache.mina</groupId>
-	            <artifactId>mina-core</artifactId>
-	            <version>${mina-core.version}</version>
-	        </dependency>
-			
-			<dependency>
-				<groupId>com.google.code.findbugs</groupId>
-				<artifactId>jsr305</artifactId>
-				<version>${jsr305.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>org.joda</groupId>
-				<artifactId>joda-convert</artifactId>
-				<version>${joda-convert.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>javax.el</groupId>
-				<artifactId>javax.el-api</artifactId>
-				<version>${javax.el-api.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>javax.servlet-api</artifactId>
-				<version>${javax.servlet-api.version}</version>
-				<scope>provided</scope>
-			</dependency>
-		
-			
-      		<!-- Test -->
-	       	<dependency>
-	            <groupId>junit</groupId>
-	            <artifactId>junit</artifactId>
-	            <version>${junit.version}</version>
-	            <scope>test</scope>
-	        </dependency>
-	        
-			<dependency>
-	            <groupId>org.springframework</groupId>
-	            <artifactId>spring-test</artifactId>
-	            <version>${springframework.version}</version>
-				<scope>test</scope>
-	        </dependency>
-	        
-	        <dependency>
-	            <groupId>org.hamcrest</groupId>
-	            <artifactId>hamcrest-all</artifactId>
-	            <version>${hamcrest-all.version}</version>
-	            <scope>test</scope>
-	        </dependency>
-	
-	        <dependency>
-	            <groupId>org.mockito</groupId>
-	            <artifactId>mockito-core</artifactId>
-	            <version>${mockito-core.version}</version>
-	            <scope>test</scope>
-	        </dependency>
-	        
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${springsecurity.version}</version>
+            </dependency>
             <dependency>
-	            <groupId>net.sourceforge.htmlunit</groupId>
-	            <artifactId>htmlunit</artifactId>
-	            <version>${htmlunit.version}</version>
-	            <scope>test</scope>
-	        </dependency>
-	        
-	        
-	        <!-- Modules -->
-			<dependency>
-				<groupId>hu.interconnect</groupId>
-				<artifactId>hr2-commons</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			
-	        <dependency>
-	            <groupId>hu.interconnect</groupId>
-	            <artifactId>hr2-commons</artifactId>
-	            <version>${project.version}</version>
-	            <type>test-jar</type>
-	            <scope>test</scope>
-	        </dependency>
-			
-			<dependency>
-				<groupId>hu.interconnect</groupId>
-				<artifactId>hr2-backend-api</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			
-	        <dependency>
-	            <groupId>hu.interconnect</groupId>
-	            <artifactId>hr2-backend-api</artifactId>
-	            <version>${project.version}</version>
-	            <type>test-jar</type>
-	            <scope>test</scope>
-	        </dependency>
-			
-       		<dependency>
-				<groupId>hu.interconnect</groupId>
-				<artifactId>hr2-backend-impl</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			
-	        <dependency>
-	            <groupId>hu.interconnect</groupId>
-	            <artifactId>hr2-backend-impl</artifactId>
-	            <version>${project.version}</version>
-	            <type>test-jar</type>
-	            <scope>test</scope>
-	        </dependency>
-		</dependencies>
-	</dependencyManagement>
-	
-	<dependencies>
-		<!-- Logging -->
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-starter-web.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
+            <!-- Logging -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>${jboss-logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.logback-extensions</groupId>
+                <artifactId>logback-ext-spring</artifactId>
+                <version>${logback-ext-spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
+            <!-- Database -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${commons-dbcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+
+            <!-- PDF -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lowagie</groupId>
+                <artifactId>itext</artifactId>
+                <version>${itext.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.xhtmlrenderer</groupId>
+                <artifactId>core-renderer</artifactId>
+                <version>${core-renderer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-tools</artifactId>
+                <version>${velocity-tools.version}</version>
+            </dependency>
+
+
+            <!-- Misc -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.sanselan</groupId>
+                <artifactId>sanselan</artifactId>
+                <version>${sanselan.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-joda</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-ooxml.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.ftpserver</groupId>
+                <artifactId>ftpserver-core</artifactId>
+                <version>${ftpserver-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.mina</groupId>
+                <artifactId>mina-core</artifactId>
+                <version>${mina-core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.joda</groupId>
+                <artifactId>joda-convert</artifactId>
+                <version>${joda-convert.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>javax.el-api</artifactId>
+                <version>${javax.el-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+            <!-- Test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${springframework.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-all</artifactId>
+                <version>${hamcrest-all.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>net.sourceforge.htmlunit</groupId>
+                <artifactId>htmlunit</artifactId>
+                <version>${htmlunit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!-- Modules -->
+            <dependency>
+                <groupId>hu.interconnect</groupId>
+                <artifactId>hr2-commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>hu.interconnect</groupId>
+                <artifactId>hr2-commons</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>hu.interconnect</groupId>
+                <artifactId>hr2-backend-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>hu.interconnect</groupId>
+                <artifactId>hr2-backend-api</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>hu.interconnect</groupId>
+                <artifactId>hr2-backend-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>hu.interconnect</groupId>
+                <artifactId>hr2-backend-impl</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
@@ -428,19 +428,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
-        
+
+
         <!-- Test -->
-       	<dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        
-	    <dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -450,27 +450,27 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
-	</dependencies>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

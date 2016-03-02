@@ -1,27 +1,27 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>hr2-backend-api</artifactId>
-	<packaging>jar</packaging>
-	<name>HR2-backend-api</name>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hr2-backend-api</artifactId>
+    <packaging>jar</packaging>
+    <name>HR2-backend-api</name>
 
-	<parent>
-		<groupId>hu.interconnect</groupId>
-		<artifactId>hr2-java-parent</artifactId>
-		<version>0.1-SNAPSHOT</version>
-	</parent>
-	
-	<dependencies>
-		<dependency>
+    <parent>
+        <groupId>hu.interconnect</groupId>
+        <artifactId>hr2-java-parent</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
             <groupId>hu.interconnect</groupId>
             <artifactId>hr2-commons</artifactId>
         </dependency>
-		
+
         <dependency>
             <groupId>hu.interconnect</groupId>
             <artifactId>hr2-commons</artifactId>
             <type>test-jar</type>
         </dependency>
-	</dependencies>
+    </dependencies>
 
 </project>

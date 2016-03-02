@@ -1,68 +1,68 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>hr2-rest-api</artifactId>
-	<packaging>jar</packaging>
-	<name>HR2-rest-api</name>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hr2-rest-api</artifactId>
+    <packaging>jar</packaging>
+    <name>HR2-rest-api</name>
 
-	<parent>
-		<groupId>hu.interconnect</groupId>
-		<artifactId>hr2-java-parent</artifactId>
-		<version>0.1-SNAPSHOT</version>
-	</parent>
-	
-	<dependencies>
-		<!-- Modules -->
-		<dependency>
-			<groupId>hu.interconnect</groupId>
-			<artifactId>hr2-backend-api</artifactId>
-		</dependency>
-		
+    <parent>
+        <groupId>hu.interconnect</groupId>
+        <artifactId>hr2-java-parent</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- Modules -->
+        <dependency>
+            <groupId>hu.interconnect</groupId>
+            <artifactId>hr2-backend-api</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>hu.interconnect</groupId>
             <artifactId>hr2-backend-impl</artifactId>
         </dependency>
-        
+
         <!-- Misc -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
-		
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-joda</artifactId>
         </dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
-		
-        
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+
         <!-- Test -->
         <dependency>
             <groupId>hu.interconnect</groupId>
             <artifactId>hr2-commons</artifactId>
             <type>test-jar</type>
         </dependency>
-        
+
         <dependency>
             <groupId>hu.interconnect</groupId>
             <artifactId>hr2-backend-api</artifactId>
             <type>test-jar</type>
         </dependency>
-        
+
         <dependency>
             <groupId>hu.interconnect</groupId>
             <artifactId>hr2-backend-impl</artifactId>
             <type>test-jar</type>
         </dependency>
-	</dependencies>
-	
+    </dependencies>
+
 </project>
