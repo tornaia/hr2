@@ -103,7 +103,7 @@
                 <configuration>
                     <!-- FIXME its not working in 0.0.2 and 0.0.3 is not released yet -->
                     <!--beforeRunning>${project.basedir}/node/node ${project.basedir}/node_modules/protractor/bin/webdriver-manager update</beforeRunning-->
-                    <protractor>${project.basedir}/node/node ${project.basedir}/node_modules/protractor/bin/protractor
+                    <protractor>${project.basedir}/node/node ${project.basedir}/node_modules/protractor/bin/protractor --troubleshoot
                     </protractor>
                     <configFile>protractor.conf.js</configFile>
                 </configuration>
