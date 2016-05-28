@@ -3,12 +3,10 @@ exports.config = {
     directConnect: true,
 
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'firefox'
     },
 
     specs: ['src/test/resources/e2e/protractor/**/*spec.js'],
-	
-	chromeDriver: 'node_modules/protractor/selenium/chromedriver_2.21.exe',
 
     baseUrl: 'http://localhost:8080/',
 
