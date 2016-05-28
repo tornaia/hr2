@@ -71,7 +71,7 @@ public final class ImageUtils {
 		GIF,
 		JPG,
 		JPEG,
-		PNG;
+		PNG; // TIFF is also supported
 
 		public static boolean isKnown(String type) {
 			try {
