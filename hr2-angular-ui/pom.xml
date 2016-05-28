@@ -13,7 +13,7 @@
 
     <properties>
         <frontend-maven-plugin.version>0.0.28</frontend-maven-plugin.version>
-        <nodeVersion>v0.12.7</nodeVersion>
+        <nodeVersion>v4.4.5</nodeVersion>
         <npmVersion>2.11.3</npmVersion>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
 
