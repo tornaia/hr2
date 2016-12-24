@@ -62,7 +62,6 @@
         <sonar.jacoco.reportPath>${coverage.reports.dir}/jacoco.exec</sonar.jacoco.reportPath>
         <sonar.jacoco.itReportPath>${coverage.reports.dir}/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.javascript.lcov.reportPath>${project.basedir}/reports/coverage/lcov.info</sonar.javascript.lcov.reportPath>
-        <sonar.testExecutionReportPaths>${project.basedir}/reports/ut_report.xml</sonar.testExecutionReportPaths>
         <sonar.exclusions>file:**/dependencies/**</sonar.exclusions>
 
         <!-- Top level dependencies -->

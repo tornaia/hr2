@@ -17,8 +17,10 @@
         <npmVersion>2.11.3</npmVersion>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
 
+        <!-- Sonar -->
         <sonar.sources>src</sonar.sources>
         <sonar.tests>test</sonar.tests>
+        <sonar.testExecutionReportPaths>${project.basedir}/reports/ut_report.xml</sonar.testExecutionReportPaths>
     </properties>
 
     <build>
