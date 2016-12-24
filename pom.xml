@@ -62,7 +62,7 @@
         <sonar.jacoco.reportPath>${coverage.reports.dir}/jacoco.exec</sonar.jacoco.reportPath>
         <sonar.jacoco.itReportPath>${coverage.reports.dir}/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.javascript.lcov.reportPath>${project.basedir}/reports/coverage/lcov.info</sonar.javascript.lcov.reportPath>
-        <sonar.genericcoverage.unitTestReportPaths>${project.basedir}/reports/ut_report.xml</sonar.genericcoverage.unitTestReportPaths>
+        <sonar.testExecutionReportPaths>${project.basedir}/reports/ut_report.xml</sonar.testExecutionReportPaths>
         <sonar.exclusions>file:**/dependencies/**</sonar.exclusions>
 
         <!-- Top level dependencies -->
@@ -77,7 +77,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
-        <jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
         <jetty-maven-plugin.version>9.3.7.v20160115</jetty-maven-plugin.version>
     </properties>
 
