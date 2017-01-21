@@ -4,7 +4,7 @@
   
   
   
-  describe('app\\dashboard\\dashboard.controller.spec.js', function() {
+  describe('test\\app\\dashboard\\dashboard.controller.spec.js', function() {
     var vm;
     var $rootScope;
     var applicationInfoService;
