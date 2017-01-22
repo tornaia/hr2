@@ -59,9 +59,8 @@
         <!-- Sonar -->
         <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
         <coverage.reports.dir>${project.basedir}/../target/coverage-reports</coverage.reports.dir>
-        <sonar.jacoco.reportPath>${coverage.reports.dir}/jacoco.exec</sonar.jacoco.reportPath>
-        <sonar.jacoco.itReportPath>${coverage.reports.dir}/jacoco-it.exec</sonar.jacoco.itReportPath>
-        <sonar.javascript.lcov.reportPaths>${project.basedir}/reports/coverage/lcov.info</sonar.javascript.lcov.reportPaths>
+        <sonar.jacoco.reportPaths>${coverage.reports.dir}/jacoco.exec</sonar.jacoco.reportPaths>
+        <sonar.javascript.lcov.reportPaths>${project.basedir}/target/coverage/lcov.info</sonar.javascript.lcov.reportPaths>
         <sonar.exclusions>file:**/dependencies/**</sonar.exclusions>
 
         <!-- Top level dependencies -->
@@ -75,7 +74,6 @@
         <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
         <jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
         <jetty-maven-plugin.version>9.3.7.v20160115</jetty-maven-plugin.version>
     </properties>
@@ -153,8 +151,6 @@
                                         <include>bin/**</include>
                                         <include>dist/**</include>
                                         <include>.tmp/**</include>
-                                        <include>coverage/**</include>
-                                        <include>reports/**</include>
                                         <include>PhantomJS_*/**</include>
                                         <include>bower_components/**</include>
                                         <include>node/**</include>
@@ -195,8 +191,6 @@
                                     <include>bin/**</include>
                                     <include>dist/**</include>
                                     <include>.tmp/**</include>
-                                    <include>coverage/**</include>
-                                    <include>reports/**</include>
                                     <include>PhantomJS_*/**</include>
                                 </includes>
                                 <followSymlinks>false</followSymlinks>
@@ -229,32 +223,22 @@
                     <configuration>
                         <includes>
                             <include>hu.interconnect.*</include>
+                            <include>test.integration.*</include>
+                            <include>test.unit.*</include>
                         </includes>
+                        <append>true</append>
                     </configuration>
                     <executions>
-                        <!--
-                            Prepares the property pointing to the JaCoCo runtime agent which
-                            is passed as VM argument when Maven the Surefire plugin is executed.
-                        -->
                         <execution>
                             <id>pre-unit-test</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
                             <configuration>
-                                <!-- Sets the path to the file which contains the execution data. -->
-                                <destFile>${sonar.jacoco.reportPath}</destFile>
-                                <!--
-                                    Sets the name of the property containing the settings
-                                    for JaCoCo runtime agent.
-                                -->
+                                <destFile>${sonar.jacoco.reportPaths}</destFile>
                                 <propertyName>surefireArgLine</propertyName>
                             </configuration>
                         </execution>
-                        <!--
-                            Ensures that the code coverage report for unit tests is created after
-                            unit tests have been run.
-                        -->
                         <execution>
                             <id>post-unit-test</id>
                             <phase>test</phase>
@@ -262,100 +246,22 @@
                                 <goal>report</goal>
                             </goals>
                             <configuration>
-                                <!-- Sets the path to the file which contains the execution data. -->
-                                <dataFile>${sonar.jacoco.reportPath}</dataFile>
-                                <!-- Sets the output directory for the code coverage report. -->
-                                <outputDirectory>${coverage.reports.dir}/jacoco-ut</outputDirectory>
+                                <dataFile>${sonar.jacoco.reportPaths}</dataFile>
+                                <outputDirectory>${coverage.reports.dir}/jacoco</outputDirectory>
                             </configuration>
                         </execution>
-                        <!--
-                            Prepares the property pointing to the JaCoCo runtime agent which
-                            is passed as VM argument when Maven the Failsafe plugin is executed.
-                        -->
-                        <execution>
-                            <id>pre-integration-test</id>
-                            <phase>pre-integration-test</phase>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                            <configuration>
-                                <!-- Sets the path to the file which contains the execution data. -->
-                                <destFile>${sonar.jacoco.itReportPath}</destFile>
-                                <!--
-                                    Sets the name of the property containing the settings
-                                    for JaCoCo runtime agent.
-                                -->
-                                <propertyName>failsafeArgLine</propertyName>
-                            </configuration>
-                        </execution>
-                        <!--
-                            Ensures that the code coverage report for integration tests after
-                            integration tests have been run.
-                        -->
-                        <execution>
-                            <id>post-integration-test</id>
-                            <phase>post-integration-test</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                            <configuration>
-                                <!-- Sets the path to the file which contains the execution data. -->
-                                <dataFile>${sonar.jacoco.itReportPath}</dataFile>
-                                <!-- Sets the output directory for the code coverage report. -->
-                                <outputDirectory>${coverage.reports.dir}/jacoco-it</outputDirectory>
-                            </configuration>
-                        </execution>
-                    </executions>
+                     </executions>
                 </plugin>
 
-                <!-- UT coverage -->
+                <!-- Coverage -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
-                        <!-- Sets the VM argument line used when unit tests are run. -->
                         <argLine>${surefireArgLine}</argLine>
-                        <!-- Skips unit tests if the value of skip.unit.tests property is true -->
                         <skipTests>${skip.unit.tests}</skipTests>
-                        <!-- Excludes integration tests when unit tests are run. -->
-                        <excludes>
-                            <exclude>**/**IntTest.java</exclude>
-                        </excludes>
                     </configuration>
-                </plugin>
-
-                <!-- IT coverage -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${maven-failsafe-plugin.version}</version>
-                    <executions>
-                        <!--
-                            Ensures that both integration-test and verify goals of the Failsafe Maven
-                            plugin are executed.
-                        -->
-                        <execution>
-                            <id>integration-tests</id>
-                            <goals>
-                                <goal>integration-test</goal>
-                                <goal>verify</goal>
-                            </goals>
-                            <configuration>
-                                <includes>
-                                    <include>**/*IntTest.java</include>
-                                    <include>**/*EndToEndTest.java</include>
-                                </includes>
-                                <!-- Sets the VM argument line used when integration tests are run. -->
-                                <argLine>${failsafeArgLine}</argLine>
-                                <!--
-                                    Skips integration tests if the value of skip.integration.tests property
-                                    is true
-                                -->
-                                <skipTests>${skip.integration.tests}</skipTests>
-                            </configuration>
-                        </execution>
-                    </executions>
                 </plugin>
 
                 <plugin>
@@ -370,9 +276,7 @@
                         </execution>
                     </executions>
                 </plugin>
-
             </plugins>
-
         </pluginManagement>
     </build>
 

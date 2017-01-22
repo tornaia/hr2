@@ -58,7 +58,7 @@ module.exports = function(config) {
     browsers : ['PhantomJS'],
 	
 	sonarQubeUnitReporter: {
-		outputFile: 'reports/ut_report.xml',
+		outputFile: 'target/coverage/ut_report.xml',
 		useBrowserName: false
 	},
 
@@ -73,7 +73,7 @@ module.exports = function(config) {
 
     coverageReporter: {
       type : 'lcov',
-      dir : 'reports',
+      dir : 'target',
 	  subdir : 'coverage'
     },
 

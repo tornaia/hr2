@@ -19,8 +19,8 @@
 
         <!-- Sonar -->
         <sonar.sources>src</sonar.sources>
-        <sonar.tests>test</sonar.tests>
-        <sonar.testExecutionReportPaths>${project.basedir}/reports/ut_report.xml</sonar.testExecutionReportPaths>
+		<sonar.tests>test</sonar.tests>
+        <sonar.testExecutionReportPaths>${project.basedir}/target/coverage/ut_report.xml</sonar.testExecutionReportPaths>
     </properties>
 
     <build>
